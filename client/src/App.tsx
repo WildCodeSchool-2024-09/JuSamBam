@@ -1,8 +1,8 @@
 import "./App.css";
 import "./components/LiveArcarde.css";
-import LiveArcade from "./components/LiveArcade";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import LiveArcade from "./components/LiveArcade";
 
 function App() {
   return (
