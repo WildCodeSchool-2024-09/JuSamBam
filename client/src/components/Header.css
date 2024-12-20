@@ -1,0 +1,35 @@
+.header-content {
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background: linear-gradient(#fd20a7, #320f52);
+  color: white;
+}
+
+.img-logo {
+  width: 100px;
+}
+
+#user-picture {
+  border-radius: 20px;
+  width: 100px;
+}
+
+.user-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.img-button {
+  min-width: 50px;
+}
