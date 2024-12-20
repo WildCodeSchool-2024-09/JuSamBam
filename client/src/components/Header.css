@@ -5,12 +5,12 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  background: linear-gradient(#FD20A7, #320F52);
+  background: linear-gradient(#fd20a7, #320f52);
   color: white;
 }
 
 .img-logo {
-    width: 100px;
+  width: 100px;
 }
 
 #user-picture {
@@ -18,13 +18,11 @@
   width: 100px;
 }
 
-
-
 .user-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-navbar {
