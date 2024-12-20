@@ -22,7 +22,7 @@ const ListArcade = [
   {
     id: 5,
     title: "Donkey Kong",
-    img: "./src/assets/images/Donkey_Kong_(série)_Logo.png",
+    img: "./src/assets/images/Donkey_Kong_Logo.png",
   },
 ];
 

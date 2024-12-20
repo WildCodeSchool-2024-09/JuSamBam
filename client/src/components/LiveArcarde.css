@@ -2,6 +2,7 @@
   list-style: none;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   gap: 5em;
   padding-left: 0px;
@@ -12,9 +13,22 @@
   font-weight: 400;
   font-style: normal;
   text-align: center;
+  font-size: medium;
 }
 #borne {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  #borne {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #list {
+    flex-direction: row;
+  }
+  #top {
+    font-size: x-large;
+  }
 }
