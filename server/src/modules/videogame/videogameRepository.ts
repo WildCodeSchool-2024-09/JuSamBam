@@ -9,10 +9,10 @@ type Videogame = {
 };
 
 class VideogameRepository {
-    async readAll(){
-        const [rows] = await databaseClient.query<Rows>("select * from videogame")
-        return [rows as Videogame[]]
-    }
+  async readAll() {
+    const [rows] = await databaseClient.query<Rows>("select * from videogame");
+    return [rows as Videogame[]];
+  }
 }
 
-export default new VideogameRepository
+export default new VideogameRepository();
