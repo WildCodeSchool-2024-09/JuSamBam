@@ -19,3 +19,4 @@ insert into item(id, title, user_id)
 values
   (1, "Stuff", 1),
   (2, "Doodads", 1);
+
