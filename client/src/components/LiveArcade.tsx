@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
 
-interface Game {
-  id: number;
-  title: string;
-  img: string;
-}
-
 interface ListArcadeProps {
   id: number;
   title: string;
@@ -13,7 +7,7 @@ interface ListArcadeProps {
 }
 
 function LiveArcade() {
-  const [games, setGames] = useState<Game[]>([]);
+  const [games, setGames] = useState<ListArcadeProps[]>([]);
 
   useEffect(() => {
     const fetchGames = async () => {
