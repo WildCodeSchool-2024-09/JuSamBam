@@ -7,10 +7,10 @@ import videogameRepository from "./videogameRepository";
 const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all items
-    const items = await videogameRepository.readAll();
+    const games = await videogameRepository.readAll();
 
     // Respond with the items in JSON format
-    res.json(items);
+    res.json(games);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
