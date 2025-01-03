@@ -35,12 +35,6 @@ function LiveArcade() {
           width={600}
         />
       </div>
-      {games.map((game) => (
-        <div key={game.id}>
-          <h3>{game.title}</h3>
-          <p>{game.img}</p>
-        </div>
-      ))}
     </div>
   );
 }
