@@ -1,30 +1,4 @@
-const ListArcade = [
-  {
-    id: 1,
-    title: "Street fighter",
-    img: "./src/assets/images/street-fighter-II.png",
-  },
-  {
-    id: 2,
-    title: "Space Invaders",
-    img: "./src/assets/images/Space_Invaders_Logo.png",
-  },
-  {
-    id: 3,
-    title: "Dragon ball fighterZ",
-    img: "./src/assets/images/Dragon_Ball_FighterZ_Logo.png",
-  },
-  {
-    id: 4,
-    title: "Pac-man",
-    img: "./src/assets/images/pac-man.gif",
-  },
-  {
-    id: 5,
-    title: "Donkey Kong",
-    img: "./src/assets/images/Donkey_Kong_Logo.png",
-  },
-];
+import { useEffect, useState } from "react";
 
 interface ListArcadeProps {
   id: number;
@@ -33,11 +7,22 @@ interface ListArcadeProps {
 }
 
 function LiveArcade() {
+  const [games, setGames] = useState<ListArcadeProps[]>([]);
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      const data = await fetch("/api/games").then((res) => res.json());
+      setGames(data);
+    };
+
+    fetchGames();
+  }, []);
+
   return (
     <div>
       <h1 id="top">Top 5 des jeux de nos arcadeur</h1>
       <ul id="list">
-        {ListArcade.map((game: ListArcadeProps) => (
+        {games.map((game: ListArcadeProps) => (
           <li key={game.id}>
             <img src={game.img} alt={game.title} width={140} />
           </li>
@@ -53,5 +38,4 @@ function LiveArcade() {
     </div>
   );
 }
-
 export default LiveArcade;
