@@ -8,11 +8,16 @@ type User = {
   lastname: string;
 };
 
-class UserRepository {
+class userRepository {
+  // The C of CRUD - Create operation
+
   async readAll() {
+    // Execute the SQL SELECT query to retrieve all users from the "user" table
     const [rows] = await databaseClient.query<Rows>("select * from user");
-    return [rows as User[]];
+
+    // Return the array of items
+    return rows as User[];
   }
 }
 
-export default new UserRepository();
+export default new userRepository();
