@@ -16,7 +16,7 @@ values
 ("Obi-Wan", "Kenobi"),
 ("Tony", "Stark");
 
-insert into videogame (id, title, thumbnail)
+insert into videogame (title, thumbnail)
 values
 ("street fighter", "http://localhost:3000/src/assets/images/street-fighter-II.png"),
 ("Space Invenders", "http://localhost:3000/src/assets/images/Space_Invaders_Logo.png"),
