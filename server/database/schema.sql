@@ -4,6 +4,12 @@ create table videogame (
   thumbnail varchar(255) not null
 );
 
+create table user (
+  id int unsigned primary key auto_increment not null,
+  firstname varchar(255) not null,
+  lastname varchar(255) not null
+)
+
 insert into videogame (id, title, thumbnail)
 values
 (1, "street fighter", "http://localhost:3000/src/assets/images/street-fighter-II.png"),
