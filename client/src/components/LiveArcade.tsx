@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
+const API_URL = import.meta.env.VITE_API_URL;
 
 interface ListArcadeProps {
   id: number;
   title: string;
-  img: string;
+  thumbnail: string;
 }
 
 function LiveArcade() {
   const [games, setGames] = useState<ListArcadeProps[]>([]);
 
   useEffect(() => {
-    const fetchGames = async () => {
-      const data = await fetch("/api/games").then((res) => res.json());
-      setGames(data);
-    };
-
-    fetchGames();
+    fetch(`${API_URL}/api/videogames`)
+      .then((resultAPI) => {
+        return resultAPI.json();
+      })
+      .then((gamejson) => {
+        setGames(gamejson);
+      });
   }, []);
 
   return (
@@ -24,7 +26,7 @@ function LiveArcade() {
       <ul id="list">
         {games.map((game: ListArcadeProps) => (
           <li key={game.id}>
-            <img src={game.img} alt={game.title} width={140} />
+            <img src={game.thumbnail} alt={game.title} width={140} />
           </li>
         ))}
       </ul>

@@ -4,14 +4,19 @@ import type { Result, Rows } from "../../../database/client";
 
 type Videogame = {
   id: number;
-  name: string;
+  title: string;
   thumbnail: string;
 };
 
 class VideogameRepository {
+  // The C of CRUD - Create operation
+
   async readAll() {
+    // Execute the SQL SELECT query to retrieve all games from the "videogame" table
     const [rows] = await databaseClient.query<Rows>("select * from videogame");
-    return [rows as Videogame[]];
+
+    // Return the array of items
+    return rows as Videogame[];
   }
 }
 
