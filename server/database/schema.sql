@@ -10,6 +10,12 @@ create table user (
   lastname varchar(255) not null
 )
 
+insert into user
+(firstname, lastname)
+values
+("Obi-Wan", "Kenobi"),
+("Tony", "Stark")
+
 insert into videogame (id, title, thumbnail)
 values
 (1, "street fighter", "http://localhost:3000/src/assets/images/street-fighter-II.png"),
