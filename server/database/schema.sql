@@ -1,21 +1,25 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
-);
-
-create table item (
+create table videogame (
   id int unsigned primary key auto_increment not null,
   title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+  thumbnail varchar(255) not null
 );
 
-insert into user(id, email, password)
-values
-  (1, "jdoe@mail.com", "123456");
+create table user (
+  id int unsigned primary key auto_increment not null,
+  firstname varchar(255) not null,
+  lastname varchar(255) not null
+);
 
-insert into item(id, title, user_id)
+insert into user
+(firstname, lastname)
 values
-  (1, "Stuff", 1),
-  (2, "Doodads", 1);
+("Obi-Wan", "Kenobi"),
+("Tony", "Stark");
+
+insert into videogame (title, thumbnail)
+values
+("street fighter", "http://localhost:3000/src/assets/images/street-fighter-II.png"),
+("Space Invenders", "http://localhost:3000/src/assets/images/Space_Invaders_Logo.png"),
+("Dragon ball fighterZ", "http://localhost:3000/src/assets/images/Dragon_Ball_FighterZ_Logo.png"),
+("Pac-man", "http://localhost:3000/src/assets/images/pac-man.gif"),
+("Donkey kong", "http://localhost:3000/src/assets/images/Donkey_Kong_Logo.png");
