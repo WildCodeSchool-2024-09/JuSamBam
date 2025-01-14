@@ -1,7 +1,7 @@
 create table videogame (
   id int unsigned primary key auto_increment not null,
   title varchar(255) not null,
-  thumbnail varchar(255) not null
+  img varchar(255) not null
 );
 
 create table user (
@@ -16,10 +16,11 @@ values
 ("Obi-Wan", "Kenobi"),
 ("Tony", "Stark");
 
-insert into videogame (title, thumbnail)
+insert into videogame (title, img)
 values
-("street fighter", "http://localhost:3000/src/assets/images/street-fighter-II.png"),
-("Space Invenders", "http://localhost:3000/src/assets/images/Space_Invaders_Logo.png"),
-("Dragon ball fighterZ", "http://localhost:3000/src/assets/images/Dragon_Ball_FighterZ_Logo.png"),
-("Pac-man", "http://localhost:3000/src/assets/images/pac-man.gif"),
-("Donkey kong", "http://localhost:3000/src/assets/images/Donkey_Kong_Logo.png");
+("Pac-man", "pac-man.gif"),
+("Space Invenders", "Space_Invaders_Logo.png"),
+("Donkey kong", "Donkey_Kong_Logo.png"),
+("street fighter", "street-fighter-II.png"),
+("Dragon ball fighterZ", "Dragon_Ball_FighterZ_Logo.png");
+
