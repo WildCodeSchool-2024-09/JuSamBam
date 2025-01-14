@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 interface ListArcadeProps {
   id: number;
   title: string;
-  thumbnail: string;
+  img: string;
 }
 
 function LiveArcade() {
@@ -26,7 +26,11 @@ function LiveArcade() {
       <ul id="list">
         {games.map((game: ListArcadeProps) => (
           <li key={game.id}>
-            <img src={game.thumbnail} alt={game.title} width={140} />
+            <img
+              src={`${API_URL}/assets/images/${game.img}`}
+              alt={game.title}
+              width={140}
+            />
           </li>
         ))}
       </ul>
