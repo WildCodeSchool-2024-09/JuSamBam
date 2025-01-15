@@ -7,14 +7,14 @@ type LoginDatas = {
 };
 
 const LoginPage: React.FC = () => {
-  const handleLoginSubmit = async (_login: LoginDatas) => {
+  const handleLoginSubmit = async (_users: LoginDatas) => {
     // try {
-    //   const response = await fetch(`${import.meta.env.VITA_API_URL}/api/login`, {
+    //   const response = await fetch(`${import.meta.env.VITA_API_URL}/api/users`, {
     //     method: "post",
     //     headers: {
     //       "Content-Type": "application/json",
     //     },
-    //     body: JSON.stringify(login),
+    //     body: JSON.stringify(users),
     //   });
     //   if (response.ok) {
     //     const data = await response.json();
