@@ -24,11 +24,11 @@ class userRepository {
   async create(addUser: Omit<User, "id">) {
     // Execute the SQL INSERT query to add a new program to the "program" table
     const [result] = await databaseClient.query<Result>(
-      "insert into user (firstname, lastname, email, password ) values (?,?,?,?)",
+      "insert into user (firstname, lastname, email, password) values (?, ?, ?, ?)",
       [addUser.firstname, addUser.lastname, addUser.email, addUser.password],
     );
     // Return the ID of the newly inserted item
-    return result.insertId;
+    return { id: result.insertId, ...addUser };
   }
 }
 
