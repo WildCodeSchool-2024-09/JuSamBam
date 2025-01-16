@@ -1,3 +1,5 @@
+import "./SubscriptionForm.css";
+
 type SubscriptionDatas = {
   firstname: string;
   lastname: string;
@@ -18,7 +20,8 @@ function SubscriptionForm({
   submitted,
 }: SubsriptionFormProps) {
   return (
-    <>
+    <fieldset id="subscription-fieldset">
+      <legend>S'inscrire</legend>
       <form
         id="subscription-form"
         onSubmit={(event) => {
@@ -78,7 +81,7 @@ function SubscriptionForm({
         />
         <button type="submit">{children}</button>
       </form>
-    </>
+    </fieldset>
   );
 }
 

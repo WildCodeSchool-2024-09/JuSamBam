@@ -16,7 +16,7 @@ function SubscriptionPage() {
     <SubscriptionForm
       defaultValue={newUser}
       submitted={(userData) =>
-        fetch(`${import.meta.env.VITA_API_URL}/api/users`, {
+        fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
