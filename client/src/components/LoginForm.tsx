@@ -41,7 +41,9 @@ function LoginForm({ children, defaultValue, submitted }: LoginFormProps) {
           name="password"
           defaultValue={defaultValue.password}
         />
-        <button type="submit">{children}</button>
+        <button className="pixel" type="submit">
+          {children}
+        </button>
       </form>
     </>
   );

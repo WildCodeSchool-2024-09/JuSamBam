@@ -1,5 +1,6 @@
 import type React from "react";
 import LoginForm from "../components/LoginForm";
+import "./LoginPage.css";
 
 type LoginDatas = {
   username: string;
@@ -35,9 +36,9 @@ const LoginPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Ce connecter</h1>
       <LoginForm defaultValue={defaultLoginDatas} submitted={handleLoginSubmit}>
-        Login
+        Play
       </LoginForm>
     </div>
   );
