@@ -1,4 +1,4 @@
-import matthieu from "../assets/images/matthieu_lopez.png";
+import { Link } from "react-router-dom";
 
 import "./Header.css";
 
@@ -14,10 +14,14 @@ function Header() {
           Classement
         </button>
       </nav>
-      <div className="user-div">
-        <img id="user-picture" src={matthieu} alt="User" />
-        <p>Matthieu Lopez</p>
-      </div>
+      <section className="auth-section">
+        <Link className="auth-link" to="/login">
+          Se connecter
+        </Link>
+        <Link className="auth-link" to="/subscribe">
+          S'inscrire
+        </Link>
+      </section>
     </div>
   );
 }

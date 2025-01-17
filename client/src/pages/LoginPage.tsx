@@ -36,7 +36,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Ce connecter</h1>
+      <h1>Se connecter</h1>
       <LoginForm defaultValue={defaultLoginDatas} submitted={handleLoginSubmit}>
         Play
       </LoginForm>
