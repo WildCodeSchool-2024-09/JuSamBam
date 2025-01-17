@@ -1,46 +1,41 @@
-.header-content {
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  background: linear-gradient(#fd20a7, #320f52);
+#subscription-fieldset {
+  border: none;
   color: white;
+  font-family: "Press Start 2P Regular", sans-serif;
+  font-size: 10px;
 }
-
-.img-logo {
-  width: 80px;
-}
-
-#user-picture {
-  border-radius: 20px;
-  width: 80px;
-}
-
-.user-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-navbar {
-  display: flex;
-  flex-direction: column;
-}
-
-.pixel-nav {
+h1#subs {
   font-size: 25px;
-  color: #e7d454;
+  padding-top: 100px;
+}
+
+.subscription-field {
+  width: 200px;
+  border-radius: 5px;
+  padding: 0.4em;
+}
+
+#subscription-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#pixel-subs {
+  font-size: 25px;
+  color: white;
   height: auto;
   margin: 10px;
   font-family: "Press Start 2P", sans-serif;
+
   position: relative;
   display: inline-block;
   vertical-align: top;
   text-transform: uppercase;
+
   cursor: pointer;
+
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -48,21 +43,21 @@
   user-select: none;
 }
 
-.pixel-nav:active {
+#pixel-subs:active {
   top: 2px;
 }
 
-.pixel-nav {
+#pixel-subs {
   position: relative;
   display: block;
   margin: 10px;
   text-transform: uppercase;
   font-family: "Press Start 2P", sans-serif;
-  font-size: 8px;
+  font-size: 18px;
   color: black;
 }
 
-.pixel-nav::before {
+#pixel-subs::before {
   content: "";
   display: block;
   position: absolute;
@@ -74,7 +69,7 @@
   z-index: -1;
 }
 
-.pixel-nav::after {
+#pixel-subs::after {
   content: "";
   display: block;
   position: absolute;
@@ -86,35 +81,22 @@
   z-index: -1;
 }
 
-.pixel-nav {
+#pixel-subs {
   padding: 10px 10px;
   position: relative;
   background: #e7d454;
   width: auto;
   z-index: 2;
 }
+
 @media screen and (min-width: 768px) {
-  .header-navbar {
-    flex-direction: row;
-    justify-content: left;
-    gap: 5em;
+  .subscription-field {
+    width: 400px;
   }
-  .pixel-nav {
-    font-size: 15px;
+  #pixel-subs {
+    font-size: 20px;
   }
-}
-
-.auth-link {
-  text-decoration: none;
-  color: white;
-  font-family: "Press Start 2P Regular", sans-serif;
-}
-
-.auth-section {
-  display: flex;
-  gap: 20px;
-}
-
-.auth-link:hover {
-  text-decoration: underline;
+  #subscription-form {
+    font-size: 20px;
+  }
 }

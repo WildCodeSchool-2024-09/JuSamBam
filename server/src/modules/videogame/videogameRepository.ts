@@ -5,7 +5,7 @@ import type { Result, Rows } from "../../../database/client";
 type Videogame = {
   id: number;
   title: string;
-  thumbnail: string;
+  img: string;
 };
 
 class VideogameRepository {

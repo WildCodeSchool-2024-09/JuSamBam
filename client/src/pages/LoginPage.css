@@ -1,46 +1,61 @@
-.header-content {
-  height: 140px;
+#login-form {
+  margin: 0;
+  height: 100vh;
+}
+
+form {
   display: flex;
   flex-direction: column;
-  flex-direction: row;
-  justify-content: space-evenly;
   align-items: center;
-  background: linear-gradient(#fd20a7, #320f52);
+  gap: 1em;
+  font-size: 1.5em;
+}
+
+h1 {
+  padding-top: 150px;
+  padding-bottom: 20px;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 1.5em;
   color: white;
+  font-family: "Press Start 2P", sans-serif;
 }
 
-.img-logo {
-  width: 80px;
+label {
+  color: white;
+  font-family: "Press Start 2P", sans-serif;
 }
 
-#user-picture {
-  border-radius: 20px;
-  width: 80px;
+.login-field {
+  width: 200px;
+  padding: 0.4em;
+  border: none;
+  border-radius: 5px;
 }
 
-.user-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container {
+  margin: 50px;
+  display: block;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-.header-navbar {
-  display: flex;
-  flex-direction: column;
-}
-
-.pixel-nav {
+.pixel {
   font-size: 25px;
-  color: #e7d454;
+  color: white;
   height: auto;
   margin: 10px;
   font-family: "Press Start 2P", sans-serif;
+
   position: relative;
   display: inline-block;
   vertical-align: top;
   text-transform: uppercase;
+
   cursor: pointer;
+
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -48,21 +63,21 @@
   user-select: none;
 }
 
-.pixel-nav:active {
+.pixel:active {
   top: 2px;
 }
 
-.pixel-nav {
+.pixel {
   position: relative;
   display: block;
   margin: 10px;
   text-transform: uppercase;
   font-family: "Press Start 2P", sans-serif;
-  font-size: 8px;
+  font-size: 25px;
   color: black;
 }
 
-.pixel-nav::before {
+.pixel::before {
   content: "";
   display: block;
   position: absolute;
@@ -74,7 +89,7 @@
   z-index: -1;
 }
 
-.pixel-nav::after {
+.pixel::after {
   content: "";
   display: block;
   position: absolute;
@@ -86,35 +101,31 @@
   z-index: -1;
 }
 
-.pixel-nav {
+.pixel {
   padding: 10px 10px;
   position: relative;
   background: #e7d454;
   width: auto;
   z-index: 2;
 }
+
 @media screen and (min-width: 768px) {
-  .header-navbar {
-    flex-direction: row;
-    justify-content: left;
-    gap: 5em;
+  .login-field {
+    width: 400px;
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
   }
-  .pixel-nav {
-    font-size: 15px;
+
+  h1 {
+    font-size: 30px;
   }
-}
 
-.auth-link {
-  text-decoration: none;
-  color: white;
-  font-family: "Press Start 2P Regular", sans-serif;
-}
+  #login-form {
+    font-size: 20px;
+  }
 
-.auth-section {
-  display: flex;
-  gap: 20px;
-}
-
-.auth-link:hover {
-  text-decoration: underline;
+  .pixel {
+    font-size: 25px;
+  }
 }

@@ -1,8 +1,8 @@
 import "./App.css";
 import "./components/LiveArcarde.css";
+import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import LiveArcade from "./components/LiveArcade";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Header />
       </header>
       <main>
-        <LiveArcade />
+        <Outlet />
       </main>
       <footer>
         <Footer />
