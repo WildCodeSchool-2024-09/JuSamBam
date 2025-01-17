@@ -21,7 +21,7 @@ function SubscriptionForm({
 }: SubsriptionFormProps) {
   return (
     <fieldset id="subscription-fieldset">
-      <legend>S'inscrire</legend>
+      <h1 id="subs">S'inscrire</h1>
       <form
         id="subscription-form"
         onSubmit={(event) => {
@@ -79,7 +79,9 @@ function SubscriptionForm({
           name="confirm-password"
           defaultValue={defaultValue.confirmPassword}
         />
-        <button type="submit">{children}</button>
+        <button id="pixel-subs" type="submit">
+          {children}
+        </button>
       </form>
     </fieldset>
   );
