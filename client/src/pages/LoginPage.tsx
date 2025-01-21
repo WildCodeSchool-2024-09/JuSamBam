@@ -3,7 +3,7 @@ import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 
 type LoginDatas = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -11,7 +11,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const defaultLoginDatas: LoginDatas = {
-    username: "",
+    email: "",
     password: "",
   };
 
@@ -21,7 +21,7 @@ function LoginPage() {
       <LoginForm
         defaultValue={defaultLoginDatas}
         submitted={(userDatas) => {
-          fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
+          fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
             method: "post",
             headers: {
               "Content-Type": "application/json",
@@ -29,9 +29,10 @@ function LoginPage() {
             body: JSON.stringify(userDatas),
           }).then((res) => {
             if (res.status === 200) {
+              alert("Connexion réussie !");
               navigate("/");
             } else {
-              alert("Email ou mot de passe incorrect");
+              alert("Email et/ou mot de passe incorrect");
             }
           });
         }}

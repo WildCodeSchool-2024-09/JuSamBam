@@ -1,5 +1,5 @@
 type LoginDatas = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -18,25 +18,25 @@ function LoginForm({ children, defaultValue, submitted }: LoginFormProps) {
           event.preventDefault();
 
           const loginDatas = new FormData(event.currentTarget);
-          const username = loginDatas.get("username") as string;
+          const email = loginDatas.get("email") as string;
           const password = loginDatas.get("password") as string;
 
           submitted({
-            username,
+            email,
             password,
           });
         }}
       >
-        <label htmlFor="username">Pseudo</label>
+        <label htmlFor="username">Email</label>
         <input
-          type="text"
+          type="email"
           className="login-field"
-          name="username"
-          defaultValue={defaultValue.username}
+          name="email"
+          defaultValue={defaultValue.email}
         />
         <label htmlFor="password">Mot de passe</label>
         <input
-          type="text"
+          type="password"
           className="login-field"
           name="password"
           defaultValue={defaultValue.password}
