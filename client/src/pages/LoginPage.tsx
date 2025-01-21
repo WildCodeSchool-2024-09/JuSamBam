@@ -1,6 +1,6 @@
 import LoginForm from "../components/LoginForm";
 import "./LoginPage.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 type LoginDatas = {
   email: string;
@@ -8,7 +8,7 @@ type LoginDatas = {
 };
 
 function LoginPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const defaultLoginDatas: LoginDatas = {
     email: "",
@@ -30,7 +30,7 @@ function LoginPage() {
           }).then((res) => {
             if (res.status === 200) {
               alert("Connexion réussie !");
-              navigate("/");
+              // navigate("/");
             } else {
               alert("Email et/ou mot de passe incorrect");
             }
