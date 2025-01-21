@@ -7,14 +7,16 @@ create table videogame (
 create table user (
   id int unsigned primary key auto_increment not null,
   firstname varchar(255) not null,
-  lastname varchar(255) not null
-);
+  lastname varchar(255) not null,
+  email varchar(255) not null,
+  password varchar(255) not null
+  );
 
 insert into user
-(firstname, lastname)
+(firstname, lastname, email, password)
 values
-("Obi-Wan", "Kenobi"),
-("Tony", "Stark");
+("Seb", "dij", "seb@gmail.com", "123456"),
+("Sammy", "nvb", "sammy@gmail.com", "123456");
 
 insert into videogame (title, img)
 values
