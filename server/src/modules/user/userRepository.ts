@@ -11,6 +11,30 @@ type User = {
 };
 
 class userRepository {
+  // The Rs of CRUD - Read operations
+
+  async read(id: number) {
+    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from user where id = ?",
+      [id],
+    );
+
+    // Return the first row of the result, which represents the item
+    return rows[0] as User;
+  }
+
+  async readByEmailWithPassword(email: string, password: string) {
+    // Execute the SQL SELECT query to retrieve a specific user by its email
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from user where email = ? and password = ?",
+      [email, password],
+    );
+
+    // Return the first row of the result, which represents the user
+    return rows[0] as User;
+  }
+
   // The C of CRUD - Create operation
 
   async readAll() {
@@ -22,12 +46,11 @@ class userRepository {
   }
 
   async create(addUser: Omit<User, "id">) {
-    // Execute the SQL INSERT query to add a new program to the "program" table
     const [result] = await databaseClient.query<Result>(
       "insert into user (firstname, lastname, email, password) values (?, ?, ?, ?)",
       [addUser.firstname, addUser.lastname, addUser.email, addUser.password],
     );
-    // Return the ID of the newly inserted item
+    // Return the newly created user with the generated ID
     return { id: result.insertId, ...addUser };
   }
 }
