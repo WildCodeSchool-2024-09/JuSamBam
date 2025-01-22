@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config({ path: ".env" });
 import supertest from "supertest";
-import app from "../src/app";
 import databaseClient from "../database/client";
+import app from "../src/app";
 
 describe("Videogame API Endpoints", () => {
   // Test GET /api/videogames : vérifier la récupération des jeux
