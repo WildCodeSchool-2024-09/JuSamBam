@@ -1,6 +1,7 @@
 import LoginForm from "../components/LoginForm";
 import "./LoginPage.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuthenticationContext } from "../contexts/AuthenticationContext";
 
 type LoginDatas = {
   email: string;
@@ -8,12 +9,14 @@ type LoginDatas = {
 };
 
 function LoginPage() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const defaultLoginDatas: LoginDatas = {
     email: "",
     password: "",
   };
+
+  const { setIsAuthentified, setUserInfos } = useAuthenticationContext();
 
   return (
     <div>
@@ -27,14 +30,19 @@ function LoginPage() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(userDatas),
-          }).then((res) => {
-            if (res.status === 200) {
-              alert("Connexion réussie !");
-              // navigate("/");
-            } else {
+          })
+            .then((res) => {
+              if (res.status === 200) {
+                alert("Connexion réussie !");
+                setIsAuthentified(true);
+                navigate("/");
+                return res.json();
+              }
               alert("Email et/ou mot de passe incorrect");
-            }
-          });
+            })
+            .then((userDatas) => {
+              setUserInfos(userDatas);
+            });
         }}
       >
         Play
