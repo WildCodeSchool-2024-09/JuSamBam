@@ -10,6 +10,7 @@ import App from "./App";
 import LiveArcade from "./components/LiveArcade";
 import LoginPage from "./pages/LoginPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
+import UserPage from "./pages/UserPage";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/subscribe",
         element: <SubscriptionPage />,
+      },
+      {
+        path: "/user",
+        element: <UserPage />,
       },
     ],
   },
