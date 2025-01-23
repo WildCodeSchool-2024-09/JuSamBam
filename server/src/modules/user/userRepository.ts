@@ -30,6 +30,14 @@ class userRepository {
     // Return the ID of the newly inserted item
     return { id: result.insertId, ...addUser };
   }
+
+  async ReadByEmail(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from user where email = ?",
+      [email],
+    );
+    return rows[0] as User;
+  }
 }
 
 export default new userRepository();

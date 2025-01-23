@@ -23,17 +23,19 @@ function LiveArcade() {
   return (
     <div>
       <h1 id="top">Top 5 des jeux de nos arcadeur</h1>
-      <ul id="list">
-        {games.map((game: ListArcadeProps) => (
-          <li key={game.id}>
-            <img
-              src={`${API_URL}/assets/images/${game.img}`}
-              alt={game.title}
-              width={140}
-            />
-          </li>
-        ))}
-      </ul>
+      {games.length > 0 && (
+        <ul id="list">
+          {games.map((game: ListArcadeProps) => (
+            <li key={game.id}>
+              <img
+                src={`${API_URL}/assets/images/${game.img}`}
+                alt={game.title}
+                width={140}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
       <div id="borne">
         <img
           src="./src/assets/images/borne-arcade1.png"

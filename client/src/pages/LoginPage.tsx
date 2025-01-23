@@ -1,47 +1,55 @@
-import type React from "react";
 import LoginForm from "../components/LoginForm";
 import "./LoginPage.css";
+import { useNavigate } from "react-router-dom";
+import { useAuthenticationContext } from "../contexts/AuthenticationContext";
 
 type LoginDatas = {
-  username: string;
+  email: string;
   password: string;
 };
 
-const LoginPage: React.FC = () => {
-  const handleLoginSubmit = async (_users: LoginDatas) => {
-    // try {
-    //   const response = await fetch(`${import.meta.env.VITA_API_URL}/api/users`, {
-    //     method: "post",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(users),
-    //   });
-    //   if (response.ok) {
-    //     const data = await response.json();
-    //     console.info("Réponse API:", data);
-    //   } else {
-    //     alert("Erreur de connexion. Vérifiez vos identifiants.");
-    //   }
-    // } catch (error) {
-    //   console.error("Erreur:", error);
-    //   alert("Erreur de connexion au serveur.");
-    // }
-  };
+function LoginPage() {
+  const navigate = useNavigate();
 
   const defaultLoginDatas: LoginDatas = {
-    username: "",
+    email: "",
     password: "",
   };
+
+  const { setIsAuthenticated, setUserInfos } = useAuthenticationContext();
 
   return (
     <div>
       <h1>Se connecter</h1>
-      <LoginForm defaultValue={defaultLoginDatas} submitted={handleLoginSubmit}>
+      <LoginForm
+        defaultValue={defaultLoginDatas}
+        submitted={(userDatas) => {
+          fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+            method: "post",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userDatas),
+          })
+            .then((res) => {
+              if (res.status === 200) {
+                alert("Connexion réussie !");
+                setIsAuthenticated(true);
+                navigate("/");
+                return res.json();
+              }
+              alert("Email et/ou mot de passe incorrect");
+            })
+            .then((userDatas) => {
+              setUserInfos(userDatas);
+            });
+        }}
+      >
         Play
       </LoginForm>
     </div>
   );
-};
+}
 
 export default LoginPage;

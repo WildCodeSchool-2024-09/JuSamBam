@@ -21,7 +21,7 @@ const app = express();
 import cors from "cors";
 
 if (process.env.CLIENT_URL != null) {
-  app.use(cors({ origin: [process.env.CLIENT_URL] }));
+  app.use(cors({ origin: [process.env.CLIENT_URL], credentials: true }));
 }
 
 // If you need to allow extra origins, you can add something like this:
@@ -66,6 +66,10 @@ import router from "./router";
 app.use(router);
 
 /* ************************************************************************* */
+
+import cookieParser from "cookie-parser";
+
+app.use(cookieParser());
 
 // Production-ready setup: What is it for?
 
