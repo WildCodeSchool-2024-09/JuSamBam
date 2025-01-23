@@ -1,4 +1,5 @@
 import { useState } from "react";
+const API_URL = import.meta.env.VITE_API_URL;
 // import { } from "../context/UserContext";
 
 interface UserData {
@@ -52,7 +53,7 @@ const UserForm: React.FC<UserFormProps> = ({ userData, setUserData }) => {
     }
 
     try {
-      const response = await fetch("https://ton-api.com/user", {
+      const response = await fetch(`${API_URL}/api/users`, {
         method: "PUT",
         // headers: {
         //   "Content-Type": "application/json",
