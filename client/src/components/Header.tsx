@@ -1,11 +1,12 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuthenticationContext } from "../contexts/AuthenticationContext";
 
 import "./Header.css";
 
 function Header() {
   // Exemple d'état de connexion de l'utilisateur
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  const { isAuthenticated, setIsAuthenticated } = useAuthenticationContext();
 
   return (
     <div className="header-content">

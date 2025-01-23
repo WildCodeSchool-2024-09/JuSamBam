@@ -16,7 +16,7 @@ function LoginPage() {
     password: "",
   };
 
-  const { setIsAuthentified, setUserInfos } = useAuthenticationContext();
+  const { setIsAuthenticated, setUserInfos } = useAuthenticationContext();
 
   return (
     <div>
@@ -26,6 +26,7 @@ function LoginPage() {
         submitted={(userDatas) => {
           fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
             method: "post",
+            credentials: "include",
             headers: {
               "Content-Type": "application/json",
             },
@@ -34,7 +35,7 @@ function LoginPage() {
             .then((res) => {
               if (res.status === 200) {
                 alert("Connexion réussie !");
-                setIsAuthentified(true);
+                setIsAuthenticated(true);
                 navigate("/");
                 return res.json();
               }
