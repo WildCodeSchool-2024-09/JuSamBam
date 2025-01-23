@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
 
 function Header() {
+  // Exemple d'état de connexion de l'utilisateur
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
   return (
     <div className="header-content">
       <img className="img-logo" src="https://picsum.photos/200" alt="Logo" />
@@ -15,12 +19,29 @@ function Header() {
         </button>
       </nav>
       <section className="auth-section">
-        <Link className="auth-link" to="/login">
-          Se connecter
-        </Link>
-        <Link className="auth-link" to="/subscribe">
-          S'inscrire
-        </Link>
+        {isAuthenticated ? (
+          <>
+            <Link className="auth-link" to="/user">
+              Mon profil
+            </Link>
+            <button
+              type="button"
+              className="auth-link"
+              onClick={() => setIsAuthenticated(false)}
+            >
+              Se déconnecter
+            </button>
+          </>
+        ) : (
+          <>
+            <Link className="auth-link" to="/login">
+              Se connecter
+            </Link>
+            <Link className="auth-link" to="/subscribe">
+              S'inscrire
+            </Link>
+          </>
+        )}
       </section>
     </div>
   );
