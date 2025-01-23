@@ -24,17 +24,6 @@ class userRepository {
     return rows[0] as User;
   }
 
-  async readByEmailWithPassword(email: string, password: string) {
-    // Execute the SQL SELECT query to retrieve a specific user by its email
-    const [rows] = await databaseClient.query<Rows>(
-      "select * from user where email = ? and password = ?",
-      [email, password],
-    );
-
-    // Return the first row of the result, which represents the user
-    return rows[0] as User;
-  }
-
   // The C of CRUD - Create operation
 
   async readAll() {
