@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 // import { } from "../context/UserContext";
 import UserForm from "../components/UserForm";
+import "../pages/userPage.css";
 const API_URL = import.meta.env.VITE_API_URL;
 
 interface UserData {
@@ -55,15 +56,29 @@ const UserPage = () => {
         (isEditing ? (
           <UserForm userData={userData} setUserData={handleSubmit} />
         ) : (
-          <div>
-            <h2>Profil de l'utilisateur</h2>
-            <p>Nom : {userData.name}</p>
-            <p>Prénom : {userData.firstName}</p>
-            <p>Email : {userData.email}</p>
-            <img src="src\assets\images\avatar.png" alt="Avatar" />
-            <button type="button" onClick={handleEdit}>
-              Modifier les infos
-            </button>
+          <div id="UserPage">
+            <h2 id="profil-title">Profil de l'utilisateur</h2>
+            <div id="user-card">
+              <img
+                id="img-avatar"
+                src="src\assets\images\avatar.png"
+                alt="Avatar"
+              />
+              <ul id="ul-card">
+                <li>
+                  <p>Nom : {userData.name}</p>
+                </li>
+                <li>
+                  <p>Prénom : {userData.firstName}</p>
+                </li>
+                <li>
+                  <p>Email : {userData.email}</p>
+                </li>
+              </ul>
+              <button id="button-modif" type="button" onClick={handleEdit}>
+                Modifier les infos
+              </button>
+            </div>
           </div>
         ))}
     </div>

@@ -93,6 +93,24 @@
   width: auto;
   z-index: 2;
 }
+
+.auth-link {
+  text-decoration: none;
+  color: white;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 10px;
+}
+
+.auth-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 768px) {
   .header-navbar {
     flex-direction: row;
@@ -102,19 +120,7 @@
   .pixel-nav {
     font-size: 15px;
   }
-}
-
-.auth-link {
-  text-decoration: none;
-  color: white;
-  font-family: "Press Start 2P Regular", sans-serif;
-}
-
-.auth-section {
-  display: flex;
-  gap: 20px;
-}
-
-.auth-link:hover {
-  text-decoration: underline;
+  .auth-section {
+    flex-direction: row;
+  }
 }
