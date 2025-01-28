@@ -1,33 +1,27 @@
 import type { RequestHandler } from "express";
 
+import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 import userRepository from "../user/userRepository";
 
 const login: RequestHandler = async (req, res, next) => {
-  const logUser = {
-    email: req.body.email,
-    password: req.body.password,
-  };
+  const { email, password } = req.body;
 
   try {
-    const user = await userRepository.ReadByEmail(logUser.email);
+    const user = await userRepository.ReadByEmail(email);
 
     if (user) {
-      if (user.password === logUser.password) {
-        const myPlayload = {
-          sub: logUser.email,
-        };
+      const verified = await argon2.verify(user.hashed_password, password);
 
+      if (verified) {
+        const myPlayload = {
+          sub: email,
+        };
         const token = await jwt.sign(
           myPlayload,
           process.env.APP_SECRET as string,
           { expiresIn: "1h" },
         );
-
-        // res.json({
-        //   token,
-        //   user: user.email,
-        // });
 
         res.cookie("authToken", token, {
           // httpOnly: true,
@@ -40,8 +34,6 @@ const login: RequestHandler = async (req, res, next) => {
       } else {
         res.sendStatus(403);
       }
-    } else {
-      res.sendStatus(403);
     }
   } catch (err) {
     next(err);
