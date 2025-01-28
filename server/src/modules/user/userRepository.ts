@@ -10,6 +10,12 @@ type User = {
   password: string;
 };
 
+type UpdateUser = {
+  id: number;
+  email: string;
+  password: string;
+};
+
 class userRepository {
   // The Rs of CRUD - Read operations
 
@@ -49,6 +55,15 @@ class userRepository {
       [email],
     );
     return rows[0] as User;
+  }
+
+  async edit(updateUser: UpdateUser) {
+    const [result] = await databaseClient.query<Result>(
+      "update user set email = ?, password = ? where id = ?",
+      [updateUser.email, updateUser.password, updateUser.id],
+    );
+
+    return result.affectedRows;
   }
 }
 
