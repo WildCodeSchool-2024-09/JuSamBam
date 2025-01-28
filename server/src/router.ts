@@ -19,6 +19,7 @@ router.get("/api/videogames", videogameActions.browse);
 router.get("/api/users", userActions.browse);
 router.post("/api/users", userActions.add);
 router.post("/api/login", authActions.login);
+router.put("/api/users", userActions.checkPassword, userActions.update);
 /* ************************************************************************* */
 
 export default router;

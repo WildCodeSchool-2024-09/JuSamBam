@@ -55,10 +55,10 @@ const UserForm: React.FC<UserFormProps> = ({ userData, setUserData }) => {
     try {
       const response = await fetch(`${API_URL}/api/users`, {
         method: "PUT",
-        // headers: {
-        //   "Content-Type": "application/json",
-        //   Authorization: `Bearer ${token}`,
-        // },
+        headers: {
+          "Content-Type": "application/json",
+          //   Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(dataToSend),
       });
 
