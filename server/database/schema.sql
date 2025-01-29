@@ -9,11 +9,11 @@ create table user (
   firstname varchar(255) not null,
   lastname varchar(255) not null,
   email varchar(255) not null,
-  password varchar(255) not null
+  hashed_password varchar(255) not null
   );
 
 insert into user
-(firstname, lastname, email, password)
+(firstname, lastname, email, hashed_password)
 values
 ("Seb", "dij", "seb@gmail.com", "123456"),
 ("Sammy", "nvb", "sammy@gmail.com", "123456");
