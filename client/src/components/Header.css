@@ -92,6 +92,7 @@
   background: #e7d454;
   width: auto;
   z-index: 2;
+  text-decoration: none;
 }
 
 .auth-link {
