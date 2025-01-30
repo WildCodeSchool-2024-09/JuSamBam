@@ -11,7 +11,11 @@ function Header() {
   return (
     <div className="header-content">
       <Link to={"/"}>
-        <img className="img-logo" src="https://picsum.photos/200" alt="Logo" />
+        <img
+          className="img-logo"
+          src="src\assets\images\Wildy-gamy-logo.png"
+          alt="Logo"
+        />
       </Link>
       <nav className="header-navbar">
         <Link className="pixel-nav" to={"/gamelisting"}>

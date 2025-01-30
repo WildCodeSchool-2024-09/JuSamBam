@@ -25,7 +25,7 @@ function LiveArcade() {
       <h1 id="top">Top 5 des jeux de nos arcadeur</h1>
       {games.length > 0 && (
         <ul id="list">
-          {games.map((game: ListArcadeProps) => (
+          {games.slice(0, 5).map((game: ListArcadeProps) => (
             <li key={game.id}>
               <img
                 src={`${API_URL}/assets/images/${game.img}`}
