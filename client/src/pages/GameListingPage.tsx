@@ -9,7 +9,7 @@ interface GamelistingProps {
   img: string;
   gender: string;
   editor: string;
-  description: string;
+  descrip: string;
 }
 
 function Gamelisting() {
@@ -100,7 +100,7 @@ function Gamelisting() {
                 <h2>{game.title}</h2>
                 <p>Genre : {game.gender}</p>
                 <p>Editeur : {game.editor}</p>
-                <p>Description : {game.description}</p>
+                <p>Description : {game.descrip}</p>
               </animated.div>
             );
           })}
