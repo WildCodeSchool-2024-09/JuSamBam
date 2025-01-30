@@ -28,3 +28,45 @@
 .conditions-page a {
   text-decoration: none;
 }
+
+@media (max-width: 1200px) {
+  .conditions-page {
+    padding: 15px;
+  }
+
+  .conditions-page h1 {
+    font-size: 2em;
+  }
+
+  .conditions-page h2 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .conditions-page {
+    padding: 10px;
+  }
+
+  .conditions-page h1 {
+    font-size: 1.75em;
+  }
+
+  .conditions-page h2 {
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 480px) {
+  .conditions-page {
+    padding: 5px;
+  }
+
+  .conditions-page h1 {
+    font-size: 1.5em;
+  }
+
+  .conditions-page h2 {
+    font-size: 1.125em;
+  }
+}
