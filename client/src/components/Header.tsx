@@ -15,9 +15,9 @@ function Header() {
         <button className="pixel-nav" type="button">
           Liste jeux
         </button>
-        <button className="pixel-nav" type="button">
+        <Link className="pixel-nav" to={"/classement"}>
           Classement
-        </button>
+        </Link>
       </nav>
       <section className="auth-section">
         {isAuthenticated ? (
