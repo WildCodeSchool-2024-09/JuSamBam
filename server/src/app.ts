@@ -59,17 +59,21 @@ app.use(express.json());
 
 /* ************************************************************************* */
 
+// import cookie-parser
+import cookieParser from "cookie-parser";
+
+app.use(cookieParser());
+
+/* ************************************************************************* */
+
 // Import the API router
 import router from "./router";
 
 // Mount the API router under the "/api" endpoint
+
 app.use(router);
 
 /* ************************************************************************* */
-
-import cookieParser from "cookie-parser";
-
-app.use(cookieParser());
 
 // Production-ready setup: What is it for?
 

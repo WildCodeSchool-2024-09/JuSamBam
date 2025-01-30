@@ -2,13 +2,13 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { AuthenticationProvider } from "./contexts/AuthenticationContext";
 
 /* ************************************************************************* */
 
 // Import the main app component
 import App from "./App";
 import LiveArcade from "./components/LiveArcade";
+import { IsAuthenticatedProvider } from "./contexts/IsAuthenticatedContext";
 import LoginPage from "./pages/LoginPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import UserPage from "./pages/UserPage";
@@ -60,11 +60,11 @@ if (rootElement == null) {
 
 // Render the app inside the root element
 createRoot(rootElement).render(
-  <AuthenticationProvider>
+  <IsAuthenticatedProvider>
     <StrictMode>
       <RouterProvider router={router} />
     </StrictMode>
-  </AuthenticationProvider>,
+  </IsAuthenticatedProvider>,
 );
 
 /**

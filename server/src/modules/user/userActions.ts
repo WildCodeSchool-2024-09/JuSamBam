@@ -3,6 +3,8 @@ import type { RequestHandler } from "express";
 // Import access to data
 import userRepository from "./userRepository";
 
+import argon2 from "argon2";
+
 // type UserDatas = {
 //   email: string | null,
 //   password: string | null,
@@ -50,7 +52,7 @@ const add: RequestHandler = async (req, res, next) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password,
+      hashed_password: req.body.hashed_password,
     };
 
     // Create the user
@@ -67,7 +69,7 @@ const update: RequestHandler = async (req, res, next) => {
   const updatedUserDatas = {
     id: Number.parseInt(req.params.id),
     email: req.body.email,
-    password: req.body.password,
+    hashed_password: req.body.hashed_password,
   };
 
   try {
@@ -92,4 +94,27 @@ const checkPassword: RequestHandler = (req, res, next) => {
     res.sendStatus(403);
   }
 };
-export default { browse, read, add, update, checkPassword };
+
+const hashingOptions = {
+  type: argon2.argon2id,
+  memoryCost: 19 * 2 ** 10 /* 19 Mio en kio (19 * 1024 kio) */,
+  timeCost: 2,
+  parallelism: 1,
+};
+
+const hashPassword: RequestHandler = async (req, res, next) => {
+  const { password } = req.body;
+  try {
+    const hashedPassword = await argon2.hash(password, hashingOptions);
+
+    req.body.hashed_password = hashedPassword;
+
+    req.body.password = undefined;
+
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, add, update, checkPassword, hashPassword };
