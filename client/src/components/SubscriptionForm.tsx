@@ -1,3 +1,6 @@
+import type React from "react";
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
 import "./SubscriptionForm.css";
 
 type SubscriptionDatas = {
@@ -8,7 +11,7 @@ type SubscriptionDatas = {
   confirmPassword: string;
 };
 
-interface SubsriptionFormProps {
+interface SubscriptionFormProps {
   children: React.ReactNode;
   defaultValue: SubscriptionDatas;
   submitted: (subscription: SubscriptionDatas) => void;
@@ -18,14 +21,27 @@ function SubscriptionForm({
   children,
   defaultValue,
   submitted,
-}: SubsriptionFormProps) {
+}: SubscriptionFormProps) {
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsCheckboxChecked(e.target.checked);
+  };
+
   return (
     <fieldset id="subscription-fieldset">
       <h1 id="subs">S'inscrire</h1>
       <form
         id="subscription-form"
-        onSubmit={(event) => {
+        onSubmit={(event: FormEvent<HTMLFormElement>) => {
           event.preventDefault();
+
+          if (!isCheckboxChecked) {
+            alert(
+              "Vous devez accepter les conditions générales pour vous inscrire.",
+            );
+            return;
+          }
 
           const subscriptionDatas = new FormData(event.currentTarget);
           const firstname = subscriptionDatas.get("firstname") as string;
@@ -72,13 +88,26 @@ function SubscriptionForm({
           name="password"
           defaultValue={defaultValue.password}
         />
-        <label htmlFor="password">Confirmer le mot de passe</label>
+        <label htmlFor="confirm-password">Confirmer le mot de passe</label>
         <input
           type="password"
           className="subscription-field"
           name="confirm-password"
           defaultValue={defaultValue.confirmPassword}
         />
+
+        <label>
+          <input
+            type="checkbox"
+            checked={isCheckboxChecked}
+            onChange={handleCheckboxChange}
+          />
+          J'accepte les{" "}
+          <a href="/conditions" target="_blank" rel="noreferrer">
+            conditions générales
+          </a>
+        </label>
+
         <button id="pixel-subs" type="submit">
           {children}
         </button>

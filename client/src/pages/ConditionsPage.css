@@ -1,0 +1,30 @@
+.conditions-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #320f52;
+  color: #ffffff;
+}
+
+.conditions-page h1,
+.conditions-page h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #fcae34;
+}
+
+.conditions-page ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.conditions-page p,
+.conditions-page li {
+  margin-bottom: 10px;
+}
+
+.conditions-page a {
+  text-decoration: none;
+}
