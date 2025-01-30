@@ -16,8 +16,8 @@ function Header() {
       <nav className="header-navbar">
         <Link className="pixel-nav" to={"/gamelisting"}>
           Liste jeux
-          </Link>
-          <Link className="pixel-nav" to={"/classement"}>
+        </Link>
+        <Link className="pixel-nav" to={"/classement"}>
           Classement
         </Link>
       </nav>
