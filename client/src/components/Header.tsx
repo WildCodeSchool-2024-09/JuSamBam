@@ -10,12 +10,14 @@ function Header() {
 
   return (
     <div className="header-content">
-      <img className="img-logo" src="https://picsum.photos/200" alt="Logo" />
+      <Link to={"/"}>
+        <img className="img-logo" src="https://picsum.photos/200" alt="Logo" />
+      </Link>
       <nav className="header-navbar">
-        <button className="pixel-nav" type="button">
+        <Link className="pixel-nav" to={"/gamelisting"}>
           Liste jeux
-        </button>
-        <Link className="pixel-nav" to={"/classement"}>
+          </Link>
+          <Link className="pixel-nav" to={"/classement"}>
           Classement
         </Link>
       </nav>

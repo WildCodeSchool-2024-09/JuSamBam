@@ -7,7 +7,13 @@ type User = {
   firstname: string;
   lastname: string;
   email: string;
-  password: string;
+  hashed_password: string;
+};
+
+type UpdateUser = {
+  id: number;
+  email: string;
+  hashed_password: string;
 };
 
 class userRepository {
@@ -36,8 +42,13 @@ class userRepository {
 
   async create(addUser: Omit<User, "id">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into user (firstname, lastname, email, password) values (?, ?, ?, ?)",
-      [addUser.firstname, addUser.lastname, addUser.email, addUser.password],
+      "insert into user (firstname, lastname, email, hashed_password) values (?, ?, ?, ?)",
+      [
+        addUser.firstname,
+        addUser.lastname,
+        addUser.email,
+        addUser.hashed_password,
+      ],
     );
     // Return the newly created user with the generated ID
     return { id: result.insertId, ...addUser };
@@ -49,6 +60,15 @@ class userRepository {
       [email],
     );
     return rows[0] as User;
+  }
+
+  async edit(updateUser: UpdateUser) {
+    const [result] = await databaseClient.query<Result>(
+      "update user set email = ?, hashed_passwordpassword = ? where id = ?",
+      [updateUser.email, updateUser.hashed_password, updateUser.id],
+    );
+
+    return result.affectedRows;
   }
 }
 
