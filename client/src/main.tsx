@@ -9,6 +9,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import LiveArcade from "./components/LiveArcade";
 import { IsAuthenticatedProvider } from "./contexts/IsAuthenticatedContext";
+import ClassementPage from "./pages/ClassementPage";
+import GameListingPage from "./pages/GameListingPage";
 import LoginPage from "./pages/LoginPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import UserPage from "./pages/UserPage";
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/user",
         element: <UserPage />,
+      },
+      {
+        path: "/gamelisting",
+        element: <GameListingPage />,
+      },
+      {
+        path: "/classement",
+        element: <ClassementPage />,
       },
     ],
   },

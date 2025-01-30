@@ -1,9 +1,8 @@
+import argon2 from "argon2";
 import type { RequestHandler } from "express";
 
 // Import access to data
 import userRepository from "./userRepository";
-
-import argon2 from "argon2";
 
 // type UserDatas = {
 //   email: string | null,
