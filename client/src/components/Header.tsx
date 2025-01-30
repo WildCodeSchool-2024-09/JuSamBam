@@ -31,15 +31,14 @@ function Header() {
               type="button"
               className="auth-link"
               onClick={() => {
-                fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
-                  credentials: "include",
-                }).then((res) => {
-                  if (confirm("Confirmer la déconnexion ?")) {
+                if (confirm("Confirmer la déconnexion ?"))
+                  fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {
+                    credentials: "include",
+                  }).then((res) => {
                     if (res.status === 200) {
                       setIsAuthenticated(false);
                     }
-                  }
-                });
+                  });
               }}
             >
               Se déconnecter
