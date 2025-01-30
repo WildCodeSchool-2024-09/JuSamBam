@@ -10,6 +10,7 @@ import { AuthenticationProvider } from "./contexts/AuthenticationContext";
 import App from "./App";
 import LiveArcade from "./components/LiveArcade";
 import GameListingPage from "./pages/GameListingPage";
+import ClassementPage from "./pages/ClassementPage";
 import LoginPage from "./pages/LoginPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import UserPage from "./pages/UserPage";
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/gamelisting",
         element: <GameListingPage />,
+      },
+      {
+        path: "/classement",
+        element: <ClassementPage />,
       },
     ],
   },

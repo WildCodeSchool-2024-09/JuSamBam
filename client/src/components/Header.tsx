@@ -16,10 +16,10 @@ function Header() {
       <nav className="header-navbar">
         <Link className="pixel-nav" to={"/gamelisting"}>
           Liste jeux
-        </Link>
-        <button className="pixel-nav" type="button">
+          </Link>
+          <Link className="pixel-nav" to={"/classement"}>
           Classement
-        </button>
+        </Link>
       </nav>
       <section className="auth-section">
         {isAuthenticated ? (
