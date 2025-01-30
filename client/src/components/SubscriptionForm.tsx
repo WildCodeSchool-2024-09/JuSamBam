@@ -29,7 +29,7 @@ function SubscriptionForm({
 
           const subscriptionDatas = new FormData(event.currentTarget);
           const firstname = subscriptionDatas.get("firstname") as string;
-          const lastname = subscriptionDatas.get("password") as string;
+          const lastname = subscriptionDatas.get("lastname") as string;
           const email = subscriptionDatas.get("email") as string;
           const password = subscriptionDatas.get("password") as string;
           const confirmPassword = subscriptionDatas.get(

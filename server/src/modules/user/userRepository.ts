@@ -64,7 +64,7 @@ class userRepository {
 
   async edit(updateUser: UpdateUser) {
     const [result] = await databaseClient.query<Result>(
-      "update user set email = ?, hashed_passwordpassword = ? where id = ?",
+      "update user set email = ?, hashed_password = ? where id = ?",
       [updateUser.email, updateUser.hashed_password, updateUser.id],
     );
 
