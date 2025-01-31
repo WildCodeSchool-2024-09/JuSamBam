@@ -9,9 +9,8 @@
   color: white;
 }
 
-.img-logo {
-  width: 17em;
-  margin-top: 80px;
+#img-logo {
+  width: 160px;
 }
 
 #user-picture {
