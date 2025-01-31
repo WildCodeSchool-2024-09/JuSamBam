@@ -17,6 +17,25 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+const add: RequestHandler = async (req, res, next) => {
+  const file = req.file as Express.Multer.File;
+
+  const newGameDatas = {
+    title: req.body.title,
+    img: file.filename,
+    gender: req.body.gender,
+    editor: req.body.editor,
+    descrip: req.body.descrip,
+  };
+
+  try {
+    const insertId = await videogameRepository.create(newGameDatas);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
 // // The R of BREAD - Read operation
 // const read: RequestHandler = async (req, res, next) => {
 //   try {
@@ -37,24 +56,19 @@ const browse: RequestHandler = async (req, res, next) => {
 //   }
 // };
 
-// // The A of BREAD - Add (Create) operation
 // const add: RequestHandler = async (req, res, next) => {
 //   try {
-//     // Extract the item data from the request body
 //     const newItem = {
 //       title: req.body.title,
 //       user_id: req.body.user_id,
 //     };
 
-//     // Create the item
 //     const insertId = await itemRepository.create(newItem);
 
-//     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
 //     res.status(201).json({ insertId });
 //   } catch (err) {
-//     // Pass any errors to the error-handling middleware
 //     next(err);
 //   }
 // };
 
-export default { browse };
+export default { browse, add };

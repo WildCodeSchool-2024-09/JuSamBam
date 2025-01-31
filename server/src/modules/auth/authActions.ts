@@ -60,6 +60,8 @@ const checkAuthCookie: RequestHandler = (req, res, next) => {
       } else {
         res.clearCookie("authToken");
       }
+    } else {
+      res.sendStatus(401);
     }
   } catch (err) {
     next(err);

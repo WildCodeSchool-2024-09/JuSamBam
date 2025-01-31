@@ -6,6 +6,9 @@ type Videogame = {
   id: number;
   title: string;
   img: string;
+  gender: string;
+  editor: string;
+  descrip: string;
 };
 
 class VideogameRepository {
@@ -17,6 +20,15 @@ class VideogameRepository {
 
     // Return the array of items
     return rows as Videogame[];
+  }
+
+  async create(addGame: Omit<Videogame, "id">) {
+    const [result] = await databaseClient.query<Result>(
+      "insert into videogame (title, img, gender, editor, descrip ) values (?, ?, ?, ?, ?)",
+      [addGame.title, addGame.img, addGame.gender, addGame.editor, addGame.descrip],
+    );
+
+    return result.insertId;
   }
 }
 

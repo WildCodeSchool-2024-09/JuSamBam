@@ -19,7 +19,8 @@ insert into user
 (firstname, lastname, email, hashed_password)
 values
 ("Seb", "dij", "seb@gmail.com", "123456"),
-("Sammy", "nvb", "sammy@gmail.com", "123456");
+("Sammy", "nvb", "sammy@gmail.com", "123456"),
+("Toto", "Toto", "toto@toto.toto", "$argon2id$v=19$m=19456,t=2,p=1$cuHyfY79JBz7w0KFD8fpPg$CiAfTgMDed0i1O5ZsgkfdDwI8VbHfngCIQVHF539Ls0");
 
 insert into videogame (title, img, gender, editor, descrip)
 values

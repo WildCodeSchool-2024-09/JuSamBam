@@ -14,6 +14,7 @@ import GameListingPage from "./pages/GameListingPage";
 import LoginPage from "./pages/LoginPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import UserPage from "./pages/UserPage";
+import NewGamePage from "./pages/NewGamePage";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
         path: "/classement",
         element: <ClassementPage />,
       },
+      {
+        path: "/ajouter_un_jeu",
+        element: <NewGamePage />
+      }
     ],
   },
 
