@@ -10,6 +10,7 @@ import App from "./App";
 import LiveArcade from "./components/LiveArcade";
 import { IsAuthenticatedProvider } from "./contexts/IsAuthenticatedContext";
 import ClassementPage from "./pages/ClassementPage";
+import ConditionsPage from "./pages/ConditionsPage";
 import GameListingPage from "./pages/GameListingPage";
 import LoginPage from "./pages/LoginPage";
 import NewGamePage from "./pages/NewGamePage";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/ajouter_un_jeu",
         element: <NewGamePage />,
+      },
+      {
+        path: "/conditions",
+        element: <ConditionsPage />,
       },
     ],
   },
