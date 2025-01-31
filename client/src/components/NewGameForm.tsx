@@ -55,7 +55,7 @@ function NewGameForm({ defaultValue, children, submitted }: NewGameFormProps) {
         required
       />
       <label htmlFor="game-image">Ajouter l'image :</label>
-      <input id="game-image" type="file" name="img" required/>
+      <input id="game-image" type="file" name="img" required />
       <button type="submit" className="pixel">
         {children}
       </button>

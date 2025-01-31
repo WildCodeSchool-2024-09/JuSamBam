@@ -12,9 +12,9 @@ import { IsAuthenticatedProvider } from "./contexts/IsAuthenticatedContext";
 import ClassementPage from "./pages/ClassementPage";
 import GameListingPage from "./pages/GameListingPage";
 import LoginPage from "./pages/LoginPage";
+import NewGamePage from "./pages/NewGamePage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import UserPage from "./pages/UserPage";
-import NewGamePage from "./pages/NewGamePage";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -57,8 +57,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/ajouter_un_jeu",
-        element: <NewGamePage />
-      }
+        element: <NewGamePage />,
+      },
     ],
   },
 

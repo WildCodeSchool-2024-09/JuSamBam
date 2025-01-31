@@ -25,7 +25,13 @@ class VideogameRepository {
   async create(addGame: Omit<Videogame, "id">) {
     const [result] = await databaseClient.query<Result>(
       "insert into videogame (title, img, gender, editor, descrip ) values (?, ?, ?, ?, ?)",
-      [addGame.title, addGame.img, addGame.gender, addGame.editor, addGame.descrip],
+      [
+        addGame.title,
+        addGame.img,
+        addGame.gender,
+        addGame.editor,
+        addGame.descrip,
+      ],
     );
 
     return result.insertId;
