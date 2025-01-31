@@ -1,0 +1,72 @@
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.carousel {
+  position: relative;
+  width: 800px; /* Largeur de la zone visible */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: absolute;
+  width: 200px;
+  height: 350px;
+  background-color: bisque;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s, opacity 0.5s, box-shadow 0.3s ease-in-out;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h2,
+.card p {
+  margin: 0;
+  padding: 0.5rem 0;
+  font-size: 12px;
+}
+
+.card.active {
+  transform: translateX(0) scale(1.1);
+  z-index: 10;
+}
+
+.card.left {
+  transform: translateX(-220px) scale(0.8);
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.card.right {
+  transform: translateX(220px) scale(0.8);
+  opacity: 0.5;
+  z-index: 5;
+}
+
+.card.behind {
+  transform: translateZ(-300px) scale(0.7);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.card.hidden {
+  display: none; /* Cacher les cartes en dehors des quatre visibles */
+}
