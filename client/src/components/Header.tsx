@@ -12,7 +12,7 @@ function Header() {
     <div className="header-content">
       <Link to={"/"}>
         <img
-          className="img-logo"
+          id="img-logo"
           src="src\assets\images\Wildy-gamy-logo.png"
           alt="Logo"
         />
