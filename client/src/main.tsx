@@ -13,6 +13,7 @@ import ClassementPage from "./pages/ClassementPage";
 import ConditionsPage from "./pages/ConditionsPage";
 import GameListingPage from "./pages/GameListingPage";
 import LoginPage from "./pages/LoginPage";
+import NewGamePage from "./pages/NewGamePage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import UserPage from "./pages/UserPage";
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/classement",
         element: <ClassementPage />,
+      },
+      {
+        path: "/ajouter_un_jeu",
+        element: <NewGamePage />,
       },
       {
         path: "/conditions",
