@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Header.css";
 import { useIsAuthenticatedContext } from "../contexts/IsAuthenticatedContext";
@@ -6,7 +6,9 @@ import { useIsAuthenticatedContext } from "../contexts/IsAuthenticatedContext";
 function Header() {
   // Exemple d'état de connexion de l'utilisateur
 
-  const { isAuthenticated, setIsAuthenticated } = useIsAuthenticatedContext();
+  const { isAuthenticated, setIsAuthenticated, userId } =
+    useIsAuthenticatedContext();
+  const navigate = useNavigate();
 
   return (
     <div className="header-content">
@@ -28,7 +30,7 @@ function Header() {
       <section className="auth-section">
         {isAuthenticated ? (
           <>
-            <Link className="auth-link" to="/user">
+            <Link className="auth-link" to={`/user/${userId}`}>
               Mon profil
             </Link>
             <button
@@ -41,6 +43,7 @@ function Header() {
                   }).then((res) => {
                     if (res.status === 200) {
                       setIsAuthenticated(false);
+                      navigate("/");
                     }
                   });
               }}

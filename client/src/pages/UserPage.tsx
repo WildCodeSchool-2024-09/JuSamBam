@@ -2,26 +2,38 @@ import { useEffect, useState } from "react";
 // import { } from "../context/UserContext";
 import UserForm from "../components/UserForm";
 import "../pages/userPage.css";
+import { useParams } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL;
 
 interface UserData {
   id: number;
-  name: string;
-  firstName: string;
+  firstname: string;
+  lastname: string;
   email: string;
-  image: string;
 }
 
 const UserPage = () => {
   // const { token } = useUser();
   const [userData, setUserData] = useState<UserData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error] = useState<string>("");
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const { id } = useParams();
 
   useEffect(() => {
-    fetchUserData(setUserData, setLoading);
-  }, []);
+    fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`, {
+      credentials: "include",
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        setUserData(data);
+      })
+      .catch(() => {
+        throw new Error("Une erreur est survenue");
+      });
+  }, [id]);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -48,11 +60,7 @@ const UserPage = () => {
 
   return (
     <div>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {!loading &&
-        !error &&
-        userData &&
+      {userData &&
         (isEditing ? (
           <UserForm userData={userData} setUserData={handleSubmit} />
         ) : (
@@ -66,10 +74,10 @@ const UserPage = () => {
               />
               <ul id="ul-card">
                 <li>
-                  <p>Nom : {userData.name}</p>
+                  <p>Nom : {userData.firstname}</p>
                 </li>
                 <li>
-                  <p>Prénom : {userData.firstName}</p>
+                  <p>Prénom : {userData.lastname}</p>
                 </li>
                 <li>
                   <p>Email : {userData.email}</p>
@@ -83,26 +91,6 @@ const UserPage = () => {
         ))}
     </div>
   );
-};
-
-const fetchUserData = async (
-  setUserData: (data: UserData) => void,
-  setLoading: (loading: boolean) => void,
-) => {
-  setLoading(true);
-  const response = await fetch(`${API_URL}/api/users`, {
-    // headers: {
-    //   Authorization: `Bearer ${token}`,
-    // },
-  });
-  if (response.ok) {
-    const data = await response.json();
-    setUserData(data);
-  } else {
-    const data = await response.json();
-    throw new Error(data.message || "Erreur lors du chargement des données");
-  }
-  setLoading(false);
 };
 
 export default UserPage;
