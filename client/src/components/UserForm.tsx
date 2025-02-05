@@ -4,11 +4,10 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 interface UserData {
   id: number;
-  name: string;
-  firstName: string;
+  firstname: string;
+  lastname: string;
   email: string;
   password?: string;
-  image: string;
 }
 
 interface UserFormData extends UserData {
@@ -82,8 +81,8 @@ const UserForm: React.FC<UserFormProps> = ({ userData, setUserData }) => {
       <input
         id="name"
         type="text"
-        name="name"
-        value={formData.name}
+        name="firstname"
+        value={formData.firstname}
         onChange={handleChange}
         aria-required="true"
       />
@@ -92,8 +91,8 @@ const UserForm: React.FC<UserFormProps> = ({ userData, setUserData }) => {
       <input
         id="firstName"
         type="text"
-        name="firstName"
-        value={formData.firstName}
+        name="lastName"
+        value={formData.lastname}
         onChange={handleChange}
         aria-required="true"
       />

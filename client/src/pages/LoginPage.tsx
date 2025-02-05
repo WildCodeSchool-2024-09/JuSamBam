@@ -41,8 +41,8 @@ function LoginPage() {
               alert("Email et/ou mot de passe incorrect");
             })
             .then((data) => {
-              navigate("/");
               setUserId(data.id);
+              navigate("/");
             });
         }}
       >
