@@ -1,32 +1,48 @@
-import { useEffect, useState } from "react";
-import { render } from "react-dom";
-import Pacman from "react-pacman";
-import "./Pacman.css";
-render(<Pacman />, document.getElementById("root"));
+import { Component } from "react";
+import PacmanReact from "react-pacman";
 
-function PacmanGame() {
-  const [timeSpent, setTimeSpent] = useState(0);
-
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "scroll";
-    };
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimeSpent((prevTime) => prevTime + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-  const score = timeSpent * 10;
-  return (
-    <div className="pacman">
-      <Pacman />
-      <h1 id="score"> Score :{score}</h1>
-    </div>
-  );
+interface PacmanProps {
+  moveUp: string;
+  moveDown: string;
+  moveLeft: string;
+  moveRight: string;
 }
 
-export default PacmanGame;
+class Pacman extends Component<PacmanProps> {
+  componentDidMount() {
+    window.addEventListener("keydown", this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.handleKeyDown);
+  }
+
+  handleKeyDown = (e: KeyboardEvent) => {
+    const { moveUp, moveDown, moveLeft, moveRight } = this.props;
+
+    const keyMap: { [key: string]: string } = {
+      [moveUp]: "ArrowUp",
+      [moveDown]: "ArrowDown",
+      [moveLeft]: "ArrowLeft",
+      [moveRight]: "ArrowRight",
+    };
+
+    const mappedKey = keyMap[e.key];
+    if (mappedKey) {
+      const keyboardEvent = new KeyboardEvent("keydown", {
+        key: mappedKey,
+      });
+      window.dispatchEvent(keyboardEvent);
+    }
+  };
+
+  render() {
+    return (
+      <div className="pacman">
+        <PacmanReact />
+      </div>
+    );
+  }
+}
+
+export default Pacman;
