@@ -1,0 +1,28 @@
+#ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 50px;
+  list-style: none;
+  color: white;
+  font-family: "Press Start 2P";
+  font-size: 10px;
+}
+
+.rank {
+  border: 5px solid #fd20a7;
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  #ranking {
+    font-size: 18px;
+  }
+
+  .rank {
+    padding: 12px;
+  }
+}
