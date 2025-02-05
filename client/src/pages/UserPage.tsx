@@ -69,7 +69,7 @@ const UserPage = () => {
             <div id="user-card">
               <img
                 id="img-avatar"
-                src="src\assets\images\avatar.png"
+                src="\assets\images\avatar.png"
                 alt="Avatar"
               />
               <ul id="ul-card">

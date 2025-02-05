@@ -15,7 +15,7 @@ function Header() {
       <Link to={"/"}>
         <img
           id="img-logo"
-          src="src\assets\images\Wildy-gamy-logo.png"
+          src="\assets\images\Wildy-gamy-logo.png"
           alt="Logo"
         />
       </Link>
