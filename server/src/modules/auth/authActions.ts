@@ -37,8 +37,7 @@ const login: RequestHandler = async (req, res, next) => {
           maxAge: 60 * 60 * 1000,
         });
 
-        res.status(200);
-        next();
+        res.status(200).json({ id: user.id });
       } else {
         res.sendStatus(403);
       }

@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         element: <SubscriptionPage />,
       },
       {
-        path: "/user",
+        path: "/user/:id",
         element: <UserPage />,
       },
       {
