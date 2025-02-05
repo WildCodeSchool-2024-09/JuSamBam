@@ -17,9 +17,11 @@
   justify-content: space-between;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   #ranking {
     font-size: 18px;
+    width: 1000px;
+    margin: 0 auto;
   }
 
   .rank {
