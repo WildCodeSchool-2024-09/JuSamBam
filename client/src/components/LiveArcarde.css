@@ -1,3 +1,8 @@
+h1#top {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
 #list {
   list-style: none;
   display: flex;
@@ -7,6 +12,7 @@
   gap: 5em;
   padding-left: 0px;
 }
+
 #top {
   color: white;
   font-family: "Press Start 2P", serif;
@@ -15,9 +21,6 @@
   text-align: center;
   font-size: medium;
 }
-#borne {
-  display: none;
-}
 
 @media screen and (min-width: 768px) {
   #borne {
@@ -25,9 +28,11 @@
     justify-content: center;
     align-items: center;
   }
+
   #list {
     flex-direction: row;
   }
+
   #top {
     font-size: x-large;
   }
