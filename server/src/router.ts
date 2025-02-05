@@ -33,7 +33,7 @@ router.post(
   userActions.hashPassword,
   userActions.add,
 );
-router.post("/api/login", authActions.login, authActions.decodeToken);
+router.post("/api/login", authActions.login);
 router.put(
   "/api/users",
   userActions.checkPassword,

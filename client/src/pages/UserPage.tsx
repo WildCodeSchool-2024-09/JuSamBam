@@ -74,10 +74,10 @@ const UserPage = () => {
               />
               <ul id="ul-card">
                 <li>
-                  <p>Nom : {userData.firstname}</p>
+                  <p>Nom : {userData.lastname}</p>
                 </li>
                 <li>
-                  <p>Prénom : {userData.lastname}</p>
+                  <p>Prénom : {userData.firstname}</p>
                 </li>
                 <li>
                   <p>Email : {userData.email}</p>
