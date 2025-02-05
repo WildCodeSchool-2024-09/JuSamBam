@@ -16,7 +16,7 @@ function LoginPage() {
     password: "",
   };
 
-  const { setIsAuthenticated } = useIsAuthenticatedContext();
+  const { setIsAuthenticated, setUserId } = useIsAuthenticatedContext();
 
   return (
     <div>
@@ -31,15 +31,19 @@ function LoginPage() {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(userDatas),
-          }).then((res) => {
-            if (res.status === 200) {
-              alert("Connexion réussie !");
-              setIsAuthenticated(true);
+          })
+            .then((res) => {
+              if (res.status === 200) {
+                alert("Connexion réussie !");
+                setIsAuthenticated(true);
+                return res.json();
+              }
+              alert("Email et/ou mot de passe incorrect");
+            })
+            .then((data) => {
               navigate("/");
-              return res.json();
-            }
-            alert("Email et/ou mot de passe incorrect");
-          });
+              setUserId(data.id);
+            });
         }}
       >
         Play

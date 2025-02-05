@@ -22,7 +22,7 @@ const login: RequestHandler = async (req, res, next) => {
 
       if (verified) {
         const myPlayload = {
-          sub: logUser.email,
+          id: user.id,
         };
         const token = await jwt.sign(
           myPlayload,
@@ -37,7 +37,8 @@ const login: RequestHandler = async (req, res, next) => {
           maxAge: 60 * 60 * 1000,
         });
 
-        res.sendStatus(200);
+        res.status(200);
+        next();
       } else {
         res.sendStatus(403);
       }
@@ -56,10 +57,11 @@ const checkAuthCookie: RequestHandler = (req, res, next) => {
     if (authToken) {
       const verified = jwt.verify(authToken, process.env.APP_SECRET as string);
       if (verified) {
-        res.sendStatus(200);
+        res.status(200);
       } else {
         res.clearCookie("authToken");
       }
+      next();
     } else {
       res.sendStatus(401);
     }
@@ -76,4 +78,15 @@ const logout: RequestHandler = (req, res, next) => {
   }
 };
 
-export default { login, checkAuthCookie, logout };
+const decodeToken: RequestHandler = async (req, res, next) => {
+  const { authToken } = req.cookies;
+
+  try {
+    const decoded = jwt.decode(authToken);
+    res.json(decoded);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { login, checkAuthCookie, logout, decodeToken };
