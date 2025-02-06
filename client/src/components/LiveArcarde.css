@@ -1,5 +1,5 @@
 h1#top {
-  padding-top: 40px;
+  padding-top: 60px;
   padding-bottom: 20px;
 }
 
@@ -9,8 +9,9 @@ h1#top {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 5em;
+  gap: 2em;
   padding-left: 0px;
+  padding-bottom: 100px;
 }
 
 #top {
@@ -23,17 +24,13 @@ h1#top {
 }
 
 @media screen and (min-width: 768px) {
-  #borne {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   #list {
     flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
   }
 
   #top {
-    font-size: x-large;
+    font-size: 25px;
   }
 }

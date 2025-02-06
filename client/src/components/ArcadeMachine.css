@@ -17,8 +17,9 @@ div.screen {
     height: 600px;
     width: 300px;
     position: relative;
-    margin: 50px auto;
+    margin: auto;
     perspective: 35em;
+    margin-top: 20px;
   }
 
   .arcade-machine .top {
@@ -83,7 +84,7 @@ div.screen {
     height: 83%;
     width: 175%;
     position: absolute;
-    top: 3%;
+    top: -3%;
     left: -35.5%;
     background-color: #202020;
     border: 5px solid #000000;
@@ -135,7 +136,7 @@ div.screen {
     width: 60px;
     background: #373636;
     position: fixed;
-    top: 79%;
+    top: 73%;
     left: -19%;
     transform: translateX(-50%);
     border-radius: 50%;

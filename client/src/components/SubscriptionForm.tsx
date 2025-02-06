@@ -30,7 +30,7 @@ function SubscriptionForm({
 
   return (
     <fieldset id="subscription-fieldset">
-      <h1 id="subs">S'inscrire</h1>
+      <h1 id="title-subs">S'inscrire</h1>
       <form
         id="subscription-form"
         onSubmit={(event: FormEvent<HTMLFormElement>) => {
@@ -97,15 +97,18 @@ function SubscriptionForm({
         />
 
         <label>
-          <input
-            type="checkbox"
-            checked={isCheckboxChecked}
-            onChange={handleCheckboxChange}
-          />
-          J'accepte les{" "}
-          <a href="/conditions" target="_blank" rel="noreferrer">
-            conditions générales
-          </a>
+          <div className="general-conditions">
+            J'accepte les{" "}
+            <a href="/conditions" target="_blank" rel="noreferrer">
+              conditions générales
+            </a>
+            <input
+              className="checkbox"
+              type="checkbox"
+              checked={isCheckboxChecked}
+              onChange={handleCheckboxChange}
+            />
+          </div>
         </label>
 
         <button id="pixel-subs" type="submit">

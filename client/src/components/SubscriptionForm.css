@@ -1,9 +1,16 @@
 #subscription-fieldset {
   border: none;
   color: white;
-  font-family: "Press Start 2P Regular", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   font-size: 10px;
 }
+
+#title-subs {
+  text-align: center;
+  margin-top: 60px;
+  padding-bottom: 30px;
+}
+
 h1#subs {
   font-size: 25px;
   padding-top: 100px;
@@ -24,37 +31,23 @@ h1#subs {
 
 #pixel-subs {
   font-size: 25px;
-  color: white;
+  color: black;
   height: auto;
   margin: 10px;
   font-family: "Press Start 2P", sans-serif;
-
   position: relative;
   display: inline-block;
   vertical-align: top;
   text-transform: uppercase;
-
   cursor: pointer;
-
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  padding: 10px 10px;
+  background: #e7d454;
+  width: auto;
+  z-index: 2;
 }
 
 #pixel-subs:active {
   top: 2px;
-}
-
-#pixel-subs {
-  position: relative;
-  display: block;
-  margin: 10px;
-  text-transform: uppercase;
-  font-family: "Press Start 2P", sans-serif;
-  font-size: 18px;
-  color: black;
 }
 
 #pixel-subs::before {
@@ -81,22 +74,35 @@ h1#subs {
   z-index: -1;
 }
 
-#pixel-subs {
-  padding: 10px 10px;
-  position: relative;
-  background: #e7d454;
-  width: auto;
-  z-index: 2;
+.checkbox {
+  height: 20px;
+  margin-top: 20px;
+}
+
+.general-conditions {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+button#pixel-subs {
+  font-size: 10px;
 }
 
 @media screen and (min-width: 768px) {
   .subscription-field {
     width: 400px;
   }
+
   #pixel-subs {
     font-size: 20px;
   }
+
   #subscription-form {
     font-size: 20px;
+  }
+
+  button#pixel-subs {
+    font-size: 15px;
   }
 }

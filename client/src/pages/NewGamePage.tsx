@@ -35,7 +35,14 @@ function NewGamePage() {
       Ajouter jeu
     </NewGameForm>
   ) : (
-    <p>Vous n'êtes pas autorisé à accéder à cette page !</p>
+    <div id="unauthorized">
+      <img
+        id="img-unauthorized"
+        src="\public\assets\images\unauthorized.png"
+        alt="unauthorized"
+      />
+      <p>Vous n'êtes pas autorisé à accéder à cette page !</p>
+    </div>
   );
 }
 

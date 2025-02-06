@@ -8,7 +8,15 @@
   padding-top: 20px;
   color: white;
   font-family: "Press Start 2P", serif;
-  font-size: 1em;
+  font-size: 10px;
+  padding-top: 60px;
+}
+
+h2#user-form-title {
+  color: white;
+  font-family: "Press Start 2P", serif;
+  font-size: 10px;
+  margin-top: 60px;
 }
 
 img#img-avatar {
@@ -48,11 +56,6 @@ img#img-avatar {
   display: inline-block;
   text-transform: uppercase;
   cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   padding: 10px 10px;
   background: #e7d454;
   width: auto;
@@ -112,19 +115,23 @@ img#img-avatar {
   #ul-card {
     position: absolute;
     left: 70px;
-    font-size: 30px;
+    font-size: 19px;
     text-align: left;
     top: 230px;
     padding-left: 20px;
-    padding-top: 20px;
+    padding-top: 40px;
   }
 
   #profil-title {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 @media screen and (min-width: 1024px) {
   #UserPage {
     height: 100%;
+  }
+
+  #ul-card {
+    font-size: 30px;
   }
 }
