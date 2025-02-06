@@ -8,10 +8,10 @@ interface Player {
 }
 
 const classPlayers: Player[] = [
-  { id: 1, name: "Jean-Jacques", score: 1500 },
+  { id: 1, name: "Matthieu", score: 1500 },
   { id: 2, name: "François-Athanase", score: 1400 },
   { id: 3, name: "Charles-Henri", score: 1300 },
-  { id: 4, name: "Matthieu", score: 1200 },
+  { id: 4, name: "Jean-Jacques", score: 1200 },
   { id: 5, name: "Marco", score: 1100 },
 ];
 

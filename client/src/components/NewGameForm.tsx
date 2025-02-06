@@ -13,6 +13,7 @@ type NewGameFormProps = {
 
 function NewGameForm({ defaultValue, children, submitted }: NewGameFormProps) {
   return (
+    // Contrairement aux autres formulaires, celui-là inclus l'ajout d'une image.
     <form
       onSubmit={(event) => {
         event.preventDefault();

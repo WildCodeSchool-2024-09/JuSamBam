@@ -55,6 +55,7 @@ const checkAuthCookie: RequestHandler = (req, res, next) => {
   try {
     if (authToken) {
       const verified = jwt.verify(authToken, process.env.APP_SECRET as string);
+
       if (verified) {
         res.status(200);
       } else {

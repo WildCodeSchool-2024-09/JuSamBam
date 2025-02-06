@@ -18,6 +18,8 @@ const UserPage = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const { id } = useParams();
 
+  // Récupération des données de l'utilisateurs grâce à son ID qui est récupéré soit lors du login, soit lors du chargement de l'application
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`, {
       credentials: "include",
@@ -58,6 +60,7 @@ const UserPage = () => {
     setIsEditing(false);
   };
 
+  // Affichage des données récupérées
   return (
     <div>
       {userData &&

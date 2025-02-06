@@ -27,6 +27,7 @@ function Header() {
           Classement
         </Link>
       </nav>
+      {/* Si un utilisateur est authentifié, afficher le lien vers le profil et celui de déconnexion. */}
       <section className="auth-section">
         {isAuthenticated ? (
           <>
@@ -52,6 +53,7 @@ function Header() {
             </button>
           </>
         ) : (
+          // Si aucun utilisateur n'est authentifié, afficherle lien vers login et inscription
           <>
             <Link className="auth-link" to="/login">
               Se connecter
