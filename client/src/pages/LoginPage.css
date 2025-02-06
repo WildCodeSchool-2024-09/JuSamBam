@@ -11,7 +11,7 @@ form {
   font-size: 1.5em;
 }
 
-h1 {
+h1#title-login {
   padding-top: 150px;
   padding-bottom: 20px;
   text-align: center;

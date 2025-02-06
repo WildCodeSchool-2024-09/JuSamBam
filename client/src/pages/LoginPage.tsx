@@ -20,7 +20,7 @@ function LoginPage() {
 
   return (
     <div>
-      <h1>Se connecter</h1>
+      <h1 id="title-login">Se connecter</h1>
       <LoginForm
         defaultValue={defaultLoginDatas}
         submitted={(userDatas) => {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Pacman from "react-pacman";
 const API_URL = import.meta.env.VITE_API_URL;
 
 interface ListArcadeProps {
@@ -36,12 +37,27 @@ function LiveArcade() {
           ))}
         </ul>
       )}
-      <div id="borne">
-        <img
-          src="./src/assets/images/borne-arcade1.png"
-          alt="borne"
-          width={600}
-        />
+      <div className="arcade-machine">
+        <div>
+          <div className="top" />
+        </div>
+        <div className="screen-container">
+          <div className="screen">
+            <Pacman />
+          </div>
+          <div className="joystick">
+            <div className="stick" />
+          </div>
+          <div className="board">
+            <div className="button button-a" />
+            <div className="button button-b" />
+            <div className="button button-c" />
+            <div className="button button-e" />
+            <div className="button button-f" />
+            <div className="button button-g" />
+          </div>
+          <div className="bottom" />
+        </div>
       </div>
     </div>
   );
