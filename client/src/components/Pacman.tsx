@@ -20,15 +20,17 @@ class Pacman extends Component<PacmanProps> {
   handleKeyDown = (e: KeyboardEvent) => {
     const { moveUp, moveDown, moveLeft, moveRight } = this.props;
 
+    // Mapping des touches personnalisées aux touches de direction
     const keyMap: { [key: string]: string } = {
       [moveUp]: "ArrowUp",
       [moveDown]: "ArrowDown",
       [moveLeft]: "ArrowLeft",
       [moveRight]: "ArrowRight",
     };
-
+    // Vérifie si la touche pressée est mappée
     const mappedKey = keyMap[e.key];
     if (mappedKey) {
+      // déclenche un nouvel événement avec la touche mappée
       const keyboardEvent = new KeyboardEvent("keydown", {
         key: mappedKey,
       });

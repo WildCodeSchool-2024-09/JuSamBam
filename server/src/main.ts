@@ -1,22 +1,22 @@
-// Load environment variables from .env file
+// Charger les variables d'environnement à partir du fichier .env
 import "dotenv/config";
 
-// Check database connection
-// Note: This is optional and can be removed if the database connection
-// is not required when starting the application
+// Vérifier la connexion à la base de données
+// Remarque : Ceci est optionnel et peut être supprimé si la connexion
+// à la base de données n'est pas nécessaire lors du démarrage de l'application
 import "../database/checkConnection";
 
-// Import the Express application from ./app
+// Importer l'application Express depuis ./app
 import app from "./app";
 
-// Get the port from the environment variables
+// Obtenir le port à partir des variables d'environnement
 const port = process.env.APP_PORT;
 
-// Start the server and listen on the specified port
+// Démarrer le serveur et écouter sur le port spécifié
 app
   .listen(port, () => {
-    console.info(`Server is listening on port ${port}`);
+    console.info(`Le serveur écoute sur le port ${port}`);
   })
   .on("error", (err: Error) => {
-    console.error("Error:", err.message);
+    console.error("Erreur :", err.message);
   });

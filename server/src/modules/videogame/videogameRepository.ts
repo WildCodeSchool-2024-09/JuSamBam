@@ -12,13 +12,13 @@ type Videogame = {
 };
 
 class VideogameRepository {
-  // The C of CRUD - Create operation
+  // Le C de CRUD - Opération de création
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all games from the "videogame" table
+    // Exécuter la requête SQL SELECT pour récupérer tous les jeux de la table "videogame"
     const [rows] = await databaseClient.query<Rows>("select * from videogame");
 
-    // Return the array of items
+    // Retourner le tableau des éléments
     return rows as Videogame[];
   }
 

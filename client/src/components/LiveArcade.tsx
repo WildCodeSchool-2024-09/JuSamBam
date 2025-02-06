@@ -11,6 +11,7 @@ interface ListArcadeProps {
 function LiveArcade() {
   const [games, setGames] = useState<ListArcadeProps[]>([]);
 
+  //effectuer une requête à l'API
   useEffect(() => {
     fetch(`${API_URL}/api/videogames`)
       .then((resultAPI) => {

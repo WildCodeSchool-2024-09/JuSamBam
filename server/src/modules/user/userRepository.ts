@@ -17,26 +17,26 @@ type UpdateUser = {
 };
 
 class userRepository {
-  // The Rs of CRUD - Read operations
+  // Les R de CRUD - Opérations de lecture
 
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Exécuter la requête SQL SELECT pour récupérer un élément spécifique par son ID
     const [rows] = await databaseClient.query<Rows>(
       "select * from user where id = ?",
       [id],
     );
 
-    // Return the first row of the result, which represents the item
+    // Retourner la première ligne du résultat, qui représente l'élément
     return rows[0] as User;
   }
 
-  // The C of CRUD - Create operation
+  // Le C de CRUD - Opération de création
 
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all users from the "user" table
+    // Exécuter la requête SQL SELECT pour récupérer tous les utilisateurs de la table "user"
     const [rows] = await databaseClient.query<Rows>("select * from user");
 
-    // Return the array of items
+    // Retourner le tableau des éléments
     return rows as User[];
   }
 
@@ -50,7 +50,7 @@ class userRepository {
         addUser.hashed_password,
       ],
     );
-    // Return the newly created user with the generated ID
+    // Retourner l'utilisateur nouvellement créé avec l'ID généré
     return { id: result.insertId, ...addUser };
   }
 
