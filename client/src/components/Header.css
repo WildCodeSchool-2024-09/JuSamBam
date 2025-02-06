@@ -1,8 +1,7 @@
 .header-content {
   height: 140px;
   display: flex;
-  flex-direction: column;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   background: linear-gradient(#fd20a7, #320f52);
@@ -11,6 +10,7 @@
 
 #img-logo {
   width: 160px;
+  cursor: pointer;
 }
 
 #user-picture {
@@ -31,35 +31,26 @@
 }
 
 .pixel-nav {
-  font-size: 25px;
-  color: #e7d454;
+  font-size: 10px;
   height: auto;
   margin: 10px;
   font-family: "Press Start 2P", sans-serif;
-  position: relative;
   display: inline-block;
   vertical-align: top;
   text-transform: uppercase;
   cursor: pointer;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  color: black;
+  position: relative;
+  padding: 10px 10px;
+
+  background: #e7d454;
+  width: auto;
+  z-index: 2;
+  text-decoration: none;
 }
 
 .pixel-nav:active {
   top: 2px;
-}
-
-.pixel-nav {
-  position: relative;
-  display: block;
-  margin: 10px;
-  text-transform: uppercase;
-  font-family: "Press Start 2P", sans-serif;
-  font-size: 8px;
-  color: black;
 }
 
 .pixel-nav::before {
@@ -86,25 +77,20 @@
   z-index: -1;
 }
 
-.pixel-nav {
-  padding: 10px 10px;
-  position: relative;
-  background: #e7d454;
-  width: auto;
-  z-index: 2;
-  text-decoration: none;
-}
-
 .auth-link {
   text-decoration: none;
   color: white;
-  font-family: "Press Start 2P", sans-serif;
+  font-family: "Press Start 2P", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: medium;
   font-size: 10px;
 }
 
 .auth-section {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -112,16 +98,42 @@
   text-decoration: underline;
 }
 
+#login-out {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  font-family: "Press Start 2P", serif;
+  font-size: 10px;
+}
+
+@media screen and (min-width: 520px) {
+  .auth-section {
+    flex-direction: column;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .header-navbar {
     flex-direction: row;
     justify-content: left;
-    gap: 5em;
+    gap: 2em;
   }
   .pixel-nav {
     font-size: 15px;
   }
   .auth-section {
     flex-direction: row;
+    flex-wrap: none;
+    font-size: 15px;
+  }
+
+  .auth-link {
+    font-size: 15px;
   }
 }

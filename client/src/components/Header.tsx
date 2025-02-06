@@ -35,7 +35,7 @@ function Header() {
             </Link>
             <button
               type="button"
-              className="auth-link"
+              id="login-out"
               onClick={() => {
                 if (confirm("Confirmer la déconnexion ?"))
                   fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {

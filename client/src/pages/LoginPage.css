@@ -12,7 +12,7 @@ form {
 }
 
 h1#title-login {
-  padding-top: 150px;
+  padding-top: 100px;
   padding-bottom: 20px;
   text-align: center;
   margin-bottom: 1em;
@@ -24,6 +24,7 @@ h1#title-login {
 label {
   color: white;
   font-family: "Press Start 2P", sans-serif;
+  font-size: 15px;
 }
 
 .login-field {
@@ -44,37 +45,28 @@ label {
 
 .pixel {
   font-size: 25px;
-  color: white;
+  color: black;
   height: auto;
   margin: 10px;
   font-family: "Press Start 2P", sans-serif;
-
   position: relative;
   display: inline-block;
   vertical-align: top;
   text-transform: uppercase;
-
   cursor: pointer;
-
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  padding: 10px 10px;
+  background: #e7d454;
+  width: auto;
+  z-index: 2;
 }
 
 .pixel:active {
   top: 2px;
-}
-
-.pixel {
-  position: relative;
-  display: block;
-  margin: 10px;
-  text-transform: uppercase;
-  font-family: "Press Start 2P", sans-serif;
-  font-size: 25px;
-  color: black;
 }
 
 .pixel::before {
@@ -99,14 +91,6 @@ label {
   right: -6px;
   background: #fcae34;
   z-index: -1;
-}
-
-.pixel {
-  padding: 10px 10px;
-  position: relative;
-  background: #e7d454;
-  width: auto;
-  z-index: 2;
 }
 
 @media screen and (min-width: 768px) {

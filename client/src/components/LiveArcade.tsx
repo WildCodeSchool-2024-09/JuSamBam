@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Pacman from "react-pacman";
+import PacmanGame from "./PacmanGame";
 const API_URL = import.meta.env.VITE_API_URL;
 
 interface ListArcadeProps {
@@ -23,7 +23,7 @@ function LiveArcade() {
 
   return (
     <div>
-      <h1 id="top">Top 5 des jeux de nos arcadeur</h1>
+      <h1 id="top">Top 5 des jeux de nos arcadeurs</h1>
       {games.length > 0 && (
         <ul id="list">
           {games.slice(0, 5).map((game: ListArcadeProps) => (
@@ -43,7 +43,7 @@ function LiveArcade() {
         </div>
         <div className="screen-container">
           <div className="screen">
-            <Pacman />
+            <PacmanGame />
           </div>
           <div className="joystick">
             <div className="stick" />

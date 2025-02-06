@@ -1,7 +1,6 @@
 // import { useEffect, useState } from "react";
 import { render } from "react-dom";
 import Pacman from "./Pacman";
-import "./Pacman.css";
 
 function PacmanGame() {
   // const [timeSpent, setTimeSpent] = useState(0);

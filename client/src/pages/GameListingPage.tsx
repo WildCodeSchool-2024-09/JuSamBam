@@ -1,6 +1,7 @@
 import { animated } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
 import "../pages/GameListingPage.css";
+import { Link } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -63,7 +64,7 @@ function Gamelisting() {
 
   return (
     <>
-      <h1>Liste des jeux de la salle d'arcade</h1>
+      <h1 id="title-list-game">Liste des jeux de la salle d'arcade</h1>
       <div
         className="carousel-container"
         onTouchStart={handleTouchStart}
@@ -106,6 +107,9 @@ function Gamelisting() {
             );
           })}
         </div>
+        <Link className="addition-game" to="/ajouter_un_jeu">
+          Ajouter Jeu
+        </Link>
       </div>
     </>
   );

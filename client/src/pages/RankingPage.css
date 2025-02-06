@@ -9,12 +9,24 @@
   font-size: 10px;
 }
 
+#title-rank {
+  color: white;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 60px;
+}
+
 .rank {
   border: 5px solid #fd20a7;
   padding: 8px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+}
+
+ul#ranking {
+  padding-bottom: 110px;
 }
 
 @media screen and (min-width: 768px) {
@@ -26,5 +38,9 @@
 
   .rank {
     padding: 12px;
+  }
+
+  #title-rank {
+    font-size: 25px;
   }
 }
