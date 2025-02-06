@@ -3,12 +3,12 @@ import express from "express";
 const router = express.Router();
 
 /* ************************************************************************* */
-// Define Your API Routes Here
+// Définissez vos routes API ici
 /* ************************************************************************* */
 
 import multer from "multer";
 const upload = multer({ dest: "public/assets/images/" });
-// Define item-related routes
+// Définir les routes liées aux items
 import authActions from "./modules/auth/authActions";
 import itemActions from "./modules/item/itemActions";
 import userActions from "./modules/user/userActions";

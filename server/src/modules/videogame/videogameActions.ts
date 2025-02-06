@@ -3,16 +3,16 @@ import type { RequestHandler } from "express";
 // Import access to data
 import videogameRepository from "./videogameRepository";
 
-// The B of BREAD - Browse (Read All) operation
+// L'opération B de BREAD - Parcourir (Lire tous les éléments)
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
+    // Récupérer tous les éléments
     const games = await videogameRepository.readAll();
 
-    // Respond with the items in JSON format
+    // Répondre avec les éléments au format JSON
     res.json(games);
   } catch (err) {
-    // Pass any errors to the error-handling middleware
+    // Transmettre toute erreur au middleware de gestion des erreurs
     next(err);
   }
 };
@@ -35,40 +35,5 @@ const add: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-
-// // The R of BREAD - Read operation
-// const read: RequestHandler = async (req, res, next) => {
-//   try {
-//     // Fetch a specific item based on the provided ID
-//     const itemId = Number(req.params.id);
-//     const item = await itemRepository.read(itemId);
-
-//     // If the item is not found, respond with HTTP 404 (Not Found)
-//     // Otherwise, respond with the item in JSON format
-//     if (item == null) {
-//       res.sendStatus(404);
-//     } else {
-//       res.json(item);
-//     }
-//   } catch (err) {
-//     // Pass any errors to the error-handling middleware
-//     next(err);
-//   }
-// };
-
-// const add: RequestHandler = async (req, res, next) => {
-//   try {
-//     const newItem = {
-//       title: req.body.title,
-//       user_id: req.body.user_id,
-//     };
-
-//     const insertId = await itemRepository.create(newItem);
-
-//     res.status(201).json({ insertId });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
 
 export default { browse, add };

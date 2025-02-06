@@ -9,44 +9,44 @@ import userRepository from "./userRepository";
 //   password: string | null,
 // }
 
-// The B of BREAD - Browse (Read All) operation
+// L'opération B de BREAD - Parcourir (Lire tous les utilisateurs)
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all user
+    // Récupérer tous les utilisateurs
     const users = await userRepository.readAll();
 
-    // Respond with the user in JSON format
+    // Répondre avec les utilisateurs au format JSON
     res.json(users);
   } catch (err) {
-    // Pass any errors to the error-handling middleware
+    // Transmettre toute erreur au middleware de gestion des erreurs
     next(err);
   }
 };
 
-// The R of BREAD - Read operation
+// L'opération R de BREAD - Lire un utilisateur
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific user based on the provided ID
+    // Récupérer un utilisateur spécifique basé sur l'ID fourni
     const userId = Number(req.params.id);
     const user = await userRepository.read(userId);
 
-    // If the user is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the user in JSON format
+    // Si l'utilisateur n'est pas trouvé, répondre avec le statut HTTP 404 (Non trouvé)
+    // Sinon, répondre avec l'utilisateur au format JSON
     if (user == null) {
       res.sendStatus(404);
     } else {
       res.json(user);
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
+    // Transmettre toute erreur au middleware de gestion des erreurs
     next(err);
   }
 };
 
-// The A of BREAD - Add (Create) operation
+// L'opération A de BREAD - Ajouter (Créer) un utilisateur
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the user data from the request body
+    // Extraire les données de l'utilisateur du corps de la requête
     const newUser = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
@@ -54,10 +54,10 @@ const add: RequestHandler = async (req, res, next) => {
       hashed_password: req.body.hashed_password,
     };
 
-    // Create the user
+    // Créer l'utilisateur
     const createdUser = await userRepository.create(newUser);
 
-    // Respond with HTTP 201 (Created) and the created user
+    // Répondre avec le statut HTTP 201 (Créé) et l'utilisateur créé
     res.status(201).json(createdUser);
   } catch (err) {
     next(err);

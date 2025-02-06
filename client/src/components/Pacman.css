@@ -6,33 +6,6 @@
   margin: 0vw 0vw 27vw 0vw;
   color: white;
 }
-/* 
-@media screen and (max-width: 720px) {
-  .pacman {
-    min-height: 30vh;
-  }
-  #score {
-    margin-left: 20%;
-  }
-}
-
-@media screen and (max-width: 520px) {
-  .pacman {
-    margin-left: 10%;
-  }
-  #score {
-    margin-left: 10%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .pacman {
-    margin-left: 0%;
-  }
-  #score {
-    margin-left: 0%;
-  }
-} */
 
 .pacman-game {
   display: flex;
@@ -48,8 +21,3 @@
   font-family: "Press Start 2P", cursive;
   text-align: center;
 }
-
-/* #score {
-  color: #fff;
-  font-family: "Press Start 2P", cursive;
-} */

@@ -1,22 +1,22 @@
-// Load the express module to create a web application
+// Charger le module express pour créer une application web
 
 import express from "express";
 
 const app = express();
 
-// Configure it
+// Configuration
 
 /* ************************************************************************* */
 
-// CORS Handling: Why is the current code present and do I need to define specific allowed origins for my project?
+// Gestion de CORS : Pourquoi ce code est-il présent et dois-je définir des origines spécifiques autorisées pour mon projet ?
 
-// CORS (Cross-Origin Resource Sharing) is a security mechanism in web browsers that blocks requests from a different domain than the server.
-// You may find the following magic line in forums:
+// CORS (Cross-Origin Resource Sharing) est un mécanisme de sécurité dans les navigateurs web qui bloque les requêtes provenant d'un domaine différent de celui du serveur.
+// Vous pouvez trouver la ligne magique suivante dans les forums :
 
 // app.use(cors());
 
-// You should NOT do that: such code uses the `cors` module to allow all origins, which can pose security issues.
-// For this pedagogical template, the CORS code allows CLIENT_URL in development mode (when process.env.CLIENT_URL is defined).
+// Vous ne devriez PAS faire cela : un tel code utilise le module `cors` pour autoriser toutes les origines, ce qui peut poser des problèmes de sécurité.
+// Pour ce modèle pédagogique, le code CORS permet CLIENT_URL en mode développement (lorsque process.env.CLIENT_URL est défini).
 
 import cors from "cors";
 
@@ -24,7 +24,7 @@ if (process.env.CLIENT_URL != null) {
   app.use(cors({ origin: [process.env.CLIENT_URL], credentials: true }));
 }
 
-// If you need to allow extra origins, you can add something like this:
+// Si vous avez besoin d'autoriser des origines supplémentaires, vous pouvez ajouter quelque chose comme ceci :
 
 /*
 app.use(
@@ -34,23 +34,23 @@ app.use(
 );
 */
 
-// With ["http://mysite.com", "http://another-domain.com"]
-// to be replaced with an array of your trusted origins
+// Avec ["http://mysite.com", "http://another-domain.com"]
+// à remplacer par un tableau de vos origines de confiance
 
 /* ************************************************************************* */
 
-// Request Parsing: Understanding the purpose of this part
+// Analyse des requêtes : Comprendre le but de cette partie
 
-// Request parsing is necessary to extract data sent by the client in an HTTP request.
-// For example to access the body of a POST request.
-// The current code contains different parsing options as comments to demonstrate different ways of extracting data.
+// L'analyse des requêtes est nécessaire pour extraire les données envoyées par le client dans une requête HTTP.
+// Par exemple, pour accéder au corps d'une requête POST.
+// Le code actuel contient différentes options d'analyse en commentaires pour démontrer différentes manières d'extraire des données.
 
-// 1. `express.json()`: Parses requests with JSON data.
-// 2. `express.urlencoded()`: Parses requests with URL-encoded data.
-// 3. `express.text()`: Parses requests with raw text data.
-// 4. `express.raw()`: Parses requests with raw binary data.
+// 1. `express.json()`: Analyse les requêtes avec des données JSON.
+// 2. `express.urlencoded()`: Analyse les requêtes avec des données URL-encodées.
+// 3. `express.text()`: Analyse les requêtes avec des données textuelles brutes.
+// 4. `express.raw()`: Analyse les requêtes avec des données binaires brutes.
 
-// Uncomment one or more of these options depending on the format of the data sent by your client:
+// Décommentez une ou plusieurs de ces options en fonction du format des données envoyées par votre client :
 
 app.use(express.json());
 // app.use(express.urlencoded());
@@ -59,34 +59,34 @@ app.use(express.json());
 
 /* ************************************************************************* */
 
-// import cookie-parser
+// importation du cookie-parser
 import cookieParser from "cookie-parser";
 
 app.use(cookieParser());
 
 /* ************************************************************************* */
 
-// Import the API router
+// Importer le routeur de l'API
 import router from "./router";
 
-// Mount the API router under the "/api" endpoint
+// Monter le routeur de l'API sous le point de terminaison "/api"
 
 app.use(router);
 
 /* ************************************************************************* */
 
-// Production-ready setup: What is it for?
+// Configuration prête pour la production : À quoi ça sert ?
 
-// The code includes sections to set up a production environment where the client and server are executed from the same processus.
+// Le code inclut des sections pour configurer un environnement de production où le client et le serveur sont exécutés depuis le même processus.
 
-// What it's for:
-// - Serving client static files from the server, which is useful when building a single-page application with React.
-// - Redirecting unhandled requests (e.g., all requests not matching a defined API route) to the client's index.html. This allows the client to handle client-side routing.
+// À quoi ça sert :
+// - Servir les fichiers statiques du client depuis le serveur, ce qui est utile lors de la création d'une application à page unique avec React.
+// - Rediriger les requêtes non gérées (par exemple, toutes les requêtes ne correspondant pas à une route API définie) vers le fichier index.html du client. Cela permet au client de gérer le routage côté client.
 
 import fs from "node:fs";
 import path from "node:path";
 
-// Serve server resources
+// Servir les ressources du serveur
 
 const publicFolderPath = path.join(__dirname, "../../server/public");
 
@@ -94,14 +94,14 @@ if (fs.existsSync(publicFolderPath)) {
   app.use(express.static(publicFolderPath));
 }
 
-// Serve client resources
+// Servir les ressources du client
 
 const clientBuildPath = path.join(__dirname, "../../client/dist");
 
 if (fs.existsSync(clientBuildPath)) {
   app.use(express.static(clientBuildPath));
 
-  // Redirect unhandled requests to the client index file
+  // Rediriger les requêtes non gérées vers le fichier index du client
 
   app.get("*", (_, res) => {
     res.sendFile("index.html", { root: clientBuildPath });
@@ -110,22 +110,22 @@ if (fs.existsSync(clientBuildPath)) {
 
 /* ************************************************************************* */
 
-// Middleware for Error Logging
-// Important: Error-handling middleware should be defined last, after other app.use() and routes calls.
+// Middleware pour la journalisation des erreurs
+// Important : Le middleware de gestion des erreurs doit être défini en dernier, après les autres appels app.use() et les routes.
 
 import type { ErrorRequestHandler } from "express";
 
-// Define a middleware function to log errors
+// Définir une fonction middleware pour journaliser les erreurs
 const logErrors: ErrorRequestHandler = (err, req, res, next) => {
-  // Log the error to the console for debugging purposes
+  // Journaliser l'erreur dans la console à des fins de débogage
   console.error(err);
-  console.error("on req:", req.method, req.path);
+  console.error("sur req :", req.method, req.path);
 
-  // Pass the error to the next middleware in the stack
+  // Transmettre l'erreur au middleware suivant dans la pile
   next(err);
 };
 
-// Mount the logErrors middleware globally
+// Monter le middleware logErrors globalement
 app.use(logErrors);
 
 /* ************************************************************************* */
