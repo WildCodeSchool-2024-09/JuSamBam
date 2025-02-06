@@ -25,7 +25,7 @@ function SubscriptionPage() {
         }).then((res) => {
           if (res.status === 201) {
             alert("Utilisateur crée avec succès, bienvenue parmi nous !");
-            navigate("/"); // mettre l'url de la page de login
+            navigate("/login"); // mettre l'url de la page de login
           }
         })
       }

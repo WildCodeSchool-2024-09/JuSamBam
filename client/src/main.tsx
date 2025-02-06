@@ -9,11 +9,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import LiveArcade from "./components/LiveArcade";
 import { IsAuthenticatedProvider } from "./contexts/IsAuthenticatedContext";
-import ClassementPage from "./pages/ClassementPage";
 import ConditionsPage from "./pages/ConditionsPage";
 import GameListingPage from "./pages/GameListingPage";
 import LoginPage from "./pages/LoginPage";
 import NewGamePage from "./pages/NewGamePage";
+import RankingPage from "./pages/RankingPage";
 import SubscriptionPage from "./pages/SubscriptionPage";
 import UserPage from "./pages/UserPage";
 
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/classement",
-        element: <ClassementPage />,
+        element: <RankingPage />,
       },
       {
         path: "/ajouter_un_jeu",
