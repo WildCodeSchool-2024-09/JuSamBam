@@ -63,6 +63,7 @@ const checkAuthCookie: RequestHandler = (req, res, next) => {
     if (authToken) {
       // Vérifie le token JWT
       const verified = jwt.verify(authToken, process.env.APP_SECRET as string);
+
       if (verified) {
         // Si le token est vérifié renvoie un statut 200
         res.status(200);

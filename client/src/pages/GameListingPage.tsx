@@ -21,6 +21,7 @@ function Gamelisting() {
   const endX = useRef(0);
 
   useEffect(() => {
+    // Récupérer les jeux vidéos
     fetch(`${API_URL}/api/videogames`)
       .then((resultAPI) => resultAPI.json())
       .then((gamejson) => {
@@ -42,11 +43,11 @@ function Gamelisting() {
 
   const handleTouchEnd = () => {
     if (startX.current - endX.current > 50) {
-      // swipe left
+      // Glisser à gauche
       handleNext();
     }
     if (startX.current - endX.current < -50) {
-      // swipe right
+      // Glisser à droite
       handlePrev();
     }
   };

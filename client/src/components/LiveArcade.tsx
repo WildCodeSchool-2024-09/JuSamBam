@@ -23,6 +23,7 @@ function LiveArcade() {
   }, []);
 
   return (
+    // Affichage des jeux en top
     <div>
       <h1 id="top">Top 5 des jeux de nos arcadeurs</h1>
       {games.length > 0 && (
@@ -38,6 +39,7 @@ function LiveArcade() {
           ))}
         </ul>
       )}
+      {/* Affichage de la borne d'arcade */}
       <div className="arcade-machine">
         <div>
           <div className="top" />

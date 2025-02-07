@@ -12,6 +12,8 @@ const IsAuthenticatedContext = createContext<IsAuthenticatedType | null>(null);
 export const IsAuthenticatedProvider = ({
   children,
 }: { children: React.ReactNode }) => {
+  // Ce context vérifie, à chaque redémarrage de l'application, s'il y a un utilisateur authentifié et récupère son ID
+
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [userId, setUserId] = useState<number | null>(null);
   useEffect(() => {
