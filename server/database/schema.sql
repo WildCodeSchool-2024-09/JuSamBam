@@ -12,15 +12,14 @@ create table user (
   firstname varchar(255) not null,
   lastname varchar(255) not null,
   email varchar(255) not null,
-  hashed_password varchar(255) not null
+  hashed_password varchar(255) not null,
+  img_profile varchar(255)
   );
 
 insert into user
-(firstname, lastname, email, hashed_password)
+(firstname, lastname, email, hashed_password, img_profile)
 values
-("Seb", "dij", "seb@gmail.com", "123456"),
-("Sammy", "nvb", "sammy@gmail.com", "123456"),
-("Toto", "Toto", "toto@toto.toto", "$argon2id$v=19$m=19456,t=2,p=1$cuHyfY79JBz7w0KFD8fpPg$CiAfTgMDed0i1O5ZsgkfdDwI8VbHfngCIQVHF539Ls0");
+("Toto", "Toto", "toto@toto.toto", "$argon2id$v=19$m=19456,t=2,p=1$J2342ebtmZRAlyn1zk6B7Q$AOf1vLCHo+8QB+cBTmBSz8Z7MR282UBWZqzr9glrkH4", null);
 
 insert into videogame (title, img, gender, editor, descrip)
 values

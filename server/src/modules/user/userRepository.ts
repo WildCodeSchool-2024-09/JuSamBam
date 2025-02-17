@@ -16,6 +16,11 @@ type UpdateUser = {
   hashed_password: string;
 };
 
+type NewImageProfile = {
+  id: number;
+  img_profile: string;
+};
+
 class userRepository {
   // Les R de CRUD - Opérations de lecture
 
@@ -66,6 +71,15 @@ class userRepository {
     const [result] = await databaseClient.query<Result>(
       "update user set email = ?, hashed_password = ? where id = ?",
       [updateUser.email, updateUser.hashed_password, updateUser.id],
+    );
+
+    return result.affectedRows;
+  }
+
+  async createImageProfile(imageProfile: NewImageProfile) {
+    const [result] = await databaseClient.query<Result>(
+      "update user set img_profile = ? where id= ?",
+      [imageProfile.img_profile, imageProfile.id],
     );
 
     return result.affectedRows;
