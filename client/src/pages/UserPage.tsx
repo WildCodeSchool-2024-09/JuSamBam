@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 // import { } from "../context/UserContext";
 import UserForm from "../components/UserForm";
 import "../pages/userPage.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import AddImageForm from "../components/AddImageForm";
 const API_URL = import.meta.env.VITE_API_URL;
 
 interface UserData {
@@ -10,6 +11,7 @@ interface UserData {
   firstname: string;
   lastname: string;
   email: string;
+  img_profile?: string;
 }
 
 const UserPage = () => {
@@ -17,7 +19,7 @@ const UserPage = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const { id } = useParams();
-
+  const navigate = useNavigate();
   // Récupération des données de l'utilisateurs grâce à son ID qui est récupéré soit lors du login, soit lors du chargement de l'application
 
   useEffect(() => {
@@ -70,25 +72,56 @@ const UserPage = () => {
           <div id="UserPage">
             <h2 id="profil-title">Profil de l'utilisateur</h2>
             <div id="user-card">
-              <img
-                id="img-avatar"
-                src="\assets\images\avatar.png"
-                alt="Avatar"
-              />
-              <ul id="ul-card">
-                <li>
-                  <p>Nom : {userData.lastname}</p>
-                </li>
-                <li>
-                  <p>Prénom : {userData.firstname}</p>
-                </li>
-                <li>
-                  <p>Email : {userData.email}</p>
-                </li>
-              </ul>
-              <button id="button-modif" type="button" onClick={handleEdit}>
-                Modifier les infos
-              </button>
+              {userData.img_profile ? (
+                <img
+                  id="img-avatar"
+                  src={`${API_URL}/assets/images/${userData.img_profile}`}
+                  alt="Avatar"
+                />
+              ) : (
+                <img
+                  id="img-avatar"
+                  src="\assets\images\avatar.png"
+                  alt="Avatar"
+                />
+              )}
+                <ul id="ul-card">
+                  <li>Nom : {userData.lastname}</li>
+                  <li>Prénom : {userData.firstname}</li>
+                  <li>Email : {userData.email}</li>
+                </ul>
+                <div className="debug">
+                  <button
+                    className="button-modif"
+                    type="button"
+                    onClick={handleEdit}
+                  >
+                    Modifier les infos
+                  </button>
+                  {userData.img_profile ? (
+                    ""
+                  ) : (
+                    <AddImageForm
+                      submitted={(image) => {
+                        fetch(`${API_URL}/api/users/${id}`, {
+                          method: "put",
+                          credentials: "include",
+                          headers: {
+                            enctype: "multipart/form-data",
+                          },
+                          body: image,
+                        }).then((res) => {
+                          if (res.status === 200) {
+                            alert("Image ajoutée");
+                            navigate("/user");
+                          }
+                        });
+                      }}
+                    >
+                      Submit
+                    </AddImageForm>
+                  )}
+                </div>
             </div>
           </div>
         ))}

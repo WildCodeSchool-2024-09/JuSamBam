@@ -24,7 +24,7 @@ function LoginPage() {
       <LoginForm
         defaultValue={defaultLoginDatas}
         submitted={(userDatas) => {
-          fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
+          fetch(`${import.meta.env.VITE_API_URL}/api/users/login`, {
             method: "post",
             credentials: "include",
             headers: {

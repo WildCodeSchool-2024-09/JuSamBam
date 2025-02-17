@@ -40,10 +40,8 @@ img#img-avatar {
 
 #ul-card {
   list-style-type: none;
-  padding-left: 0px;
   color: white;
   font-family: "Press Start 2P", sans-serif;
-  padding-bottom: 300px;
 }
 
 #button-modif {
@@ -93,6 +91,25 @@ img#img-avatar {
   z-index: -1;
 }
 
+.debug {
+  border: 2px solid white;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* * {
+  border: 2px solid white;
+} */
+
+.debug2 {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 @media screen and (min-width: 768px) {
   #user-card {
     flex-direction: row-reverse;
@@ -100,9 +117,10 @@ img#img-avatar {
   }
 
   img#img-avatar {
-    margin-right: 20px;
+    /* margin-right: 20px;
     margin-top: 20px;
-    margin-bottom: 200px;
+    margin-bottom: 200px; */
+    margin: 70px;
     width: 30%;
   }
 
