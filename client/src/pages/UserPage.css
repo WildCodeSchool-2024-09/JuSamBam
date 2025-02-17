@@ -108,8 +108,6 @@ img#img-avatar {
   flex-direction: column;
 }
 
-
-
 @media screen and (min-width: 768px) {
   #user-card {
     flex-direction: row-reverse;

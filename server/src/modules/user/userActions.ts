@@ -116,4 +116,31 @@ const hashPassword: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, update, checkPassword, hashPassword };
+const addImageProfile: RequestHandler = async (req, res, next) => {
+  const file = req.file as Express.Multer.File;
+  const newImageProfile = {
+    id: Number.parseInt(req.params.id),
+    img_profile: file.filename,
+  };
+  try {
+    const affectedRows =
+      await userRepository.createImageProfile(newImageProfile);
+    if (affectedRows !== 0) {
+      res.status(201);
+    } else {
+      res.status(404);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  browse,
+  read,
+  add,
+  update,
+  checkPassword,
+  hashPassword,
+  addImageProfile,
+};

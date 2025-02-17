@@ -85,7 +85,7 @@ const logout: RequestHandler = (req, res, next) => {
   const { authToken } = req.cookies;
 
   if (authToken) {
-    res.clearCookie("authToken").sendStatus(200);
+    res.clearCookie(authToken).sendStatus(200);
   }
 };
 

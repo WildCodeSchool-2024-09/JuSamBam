@@ -85,43 +85,39 @@ const UserPage = () => {
                   alt="Avatar"
                 />
               )}
-                <ul id="ul-card">
-                  <li>Nom : {userData.lastname}</li>
-                  <li>Prénom : {userData.firstname}</li>
-                  <li>Email : {userData.email}</li>
-                </ul>
-                <div className="debug">
-                  <button
-                    className="button-modif"
-                    type="button"
-                    onClick={handleEdit}
+              <ul id="ul-card">
+                <li>Nom : {userData.lastname}</li>
+                <li>Prénom : {userData.firstname}</li>
+                <li>Email : {userData.email}</li>
+              </ul>
+              <div className="debug">
+                <button id="button-modif" type="button" onClick={handleEdit}>
+                  Modifier les infos
+                </button>
+                {userData.img_profile ? (
+                  ""
+                ) : (
+                  <AddImageForm
+                    submitted={(image) => {
+                      fetch(`${API_URL}/api/users/${id}`, {
+                        method: "put",
+                        credentials: "include",
+                        headers: {
+                          enctype: "multipart/form-data",
+                        },
+                        body: image,
+                      }).then((res) => {
+                        if (res.status === 200) {
+                          alert("Image ajoutée");
+                          navigate("/user");
+                        }
+                      });
+                    }}
                   >
-                    Modifier les infos
-                  </button>
-                  {userData.img_profile ? (
-                    ""
-                  ) : (
-                    <AddImageForm
-                      submitted={(image) => {
-                        fetch(`${API_URL}/api/users/${id}`, {
-                          method: "put",
-                          credentials: "include",
-                          headers: {
-                            enctype: "multipart/form-data",
-                          },
-                          body: image,
-                        }).then((res) => {
-                          if (res.status === 200) {
-                            alert("Image ajoutée");
-                            navigate("/user");
-                          }
-                        });
-                      }}
-                    >
-                      Submit
-                    </AddImageForm>
-                  )}
-                </div>
+                    Submit
+                  </AddImageForm>
+                )}
+              </div>
             </div>
           </div>
         ))}
