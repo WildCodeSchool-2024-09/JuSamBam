@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import "./Header.css";
 import { useIsAuthenticatedContext } from "../contexts/IsAuthenticatedContext";
+import DecoPacmanHeader from "./DecoPacmanHeader";
+import "../components/DecoPacman.css";
 
 function Header() {
   // Exemple d'état de connexion de l'utilisateur
@@ -64,6 +65,7 @@ function Header() {
           </>
         )}
       </section>
+      <DecoPacmanHeader />
     </div>
   );
 }

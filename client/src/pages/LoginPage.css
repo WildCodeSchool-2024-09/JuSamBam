@@ -18,12 +18,10 @@ h1#title-login {
   margin-bottom: 1em;
   font-size: 1.5em;
   color: white;
-  font-family: "Press Start 2P", sans-serif;
 }
 
 label {
   color: white;
-  font-family: "Press Start 2P", sans-serif;
   font-size: 15px;
 }
 
@@ -48,7 +46,6 @@ label {
   color: black;
   height: auto;
   margin: 10px;
-  font-family: "Press Start 2P", sans-serif;
   position: relative;
   display: inline-block;
   vertical-align: top;

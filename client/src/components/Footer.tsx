@@ -1,9 +1,11 @@
+import DecoPacmanFooter from "./DecoPacmanFooter";
 import "./Footer.css";
 
 function Footer() {
   return (
     <div className="footer-content">
-      <h2>© Wildy Gamy</h2>
+      <DecoPacmanFooter />
+      <h2 id="title-footer">© Wildy Gamy</h2>
     </div>
   );
 }
