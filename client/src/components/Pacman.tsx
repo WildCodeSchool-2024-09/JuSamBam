@@ -27,10 +27,11 @@ class Pacman extends Component<PacmanProps> {
       [moveLeft]: "ArrowLeft",
       [moveRight]: "ArrowRight",
     };
+
     // Vérifie si la touche pressée est mappée
     const mappedKey = keyMap[e.key];
     if (mappedKey) {
-      // déclenche un nouvel événement avec la touche mappée
+      // Déclenche un nouvel événement avec la touche mappée
       const keyboardEvent = new KeyboardEvent("keydown", {
         key: mappedKey,
       });
