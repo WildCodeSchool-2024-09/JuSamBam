@@ -1,11 +1,10 @@
 #title-list-game {
   color: white;
-  font-family: "Press Start 2P", serif;
   font-weight: 400;
   font-style: normal;
   text-align: center;
   font-size: 15px;
-  padding-top: 60px;
+  padding-top: 75px;
   padding-bottom: 40px;
 }
 
@@ -60,7 +59,6 @@
   margin: 0;
   padding: 0.5rem 0;
   color: white;
-  font-family: "Press Start 2P", serif;
   font-size: 7px;
 }
 
@@ -90,7 +88,6 @@
   color: black;
   height: auto;
   margin: 10px;
-  font-family: "Press Start 2P", sans-serif;
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -136,7 +133,6 @@
 }
 
 #unauthorized {
-  font-family: "Press Start 2P", sans-serif;
   color: white;
   text-align: center;
   display: flex;
