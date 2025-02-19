@@ -8,7 +8,6 @@ interface UserData {
   lastname: string;
   email: string;
   password?: string;
-  infos?: string;
 }
 
 interface UserFormData extends UserData {
