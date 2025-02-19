@@ -72,51 +72,59 @@ const UserPage = () => {
           <div id="UserPage">
             <h2 id="profil-title">Profil de l'utilisateur</h2>
             <div id="user-card">
-              {userData.img_profile ? (
-                <img
-                  id="img-avatar"
-                  src={`${API_URL}/assets/images/${userData.img_profile}`}
-                  alt="Avatar"
-                />
-              ) : (
-                <img
-                  id="img-avatar"
-                  src="\assets\images\avatar.png"
-                  alt="Avatar"
-                />
-              )}
-              <ul id="ul-card">
-                <li>Nom : {userData.lastname}</li>
-                <li>Prénom : {userData.firstname}</li>
-                <li>Email : {userData.email}</li>
-              </ul>
-              <div className="debug">
-                <button id="button-modif" type="button" onClick={handleEdit}>
+              <div id="ul-card">
+                <ul>
+                  <li>Nom : {userData.lastname}</li>
+                  <li>Prénom : {userData.firstname}</li>
+                  <li>Email : {userData.email}</li>
+                </ul>
+                <button
+                  className="button-modif"
+                  type="button"
+                  onClick={handleEdit}
+                >
                   Modifier les infos
                 </button>
-                {userData.img_profile ? (
-                  ""
-                ) : (
-                  <AddImageForm
-                    submitted={(image) => {
-                      fetch(`${API_URL}/api/users/${id}`, {
-                        method: "put",
-                        credentials: "include",
-                        headers: {
-                          enctype: "multipart/form-data",
-                        },
-                        body: image,
-                      }).then((res) => {
-                        if (res.status === 200) {
-                          alert("Image ajoutée");
-                          navigate("/user");
-                        }
-                      });
-                    }}
-                  >
-                    Submit
-                  </AddImageForm>
-                )}
+              </div>
+              <div className="debug">
+                <div className="img-user">
+                  {userData.img_profile ? (
+                    <img
+                      id="img-avatar"
+                      src={`${API_URL}/assets/images/${userData.img_profile}`}
+                      alt="Avatar"
+                    />
+                  ) : (
+                    <img
+                      id="img-avatar"
+                      src="\assets\images\avatar.png"
+                      alt="Avatar"
+                    />
+                  )}
+                  {userData.img_profile ? (
+                    ""
+                  ) : (
+                    <AddImageForm
+                      submitted={(image) => {
+                        fetch(`${API_URL}/api/users/${id}`, {
+                          method: "put",
+                          credentials: "include",
+                          headers: {
+                            enctype: "multipart/form-data",
+                          },
+                          body: image,
+                        }).then((res) => {
+                          if (res.status === 200) {
+                            alert("Image ajoutée");
+                            navigate("/user");
+                          }
+                        });
+                      }}
+                    >
+                      Modif
+                    </AddImageForm>
+                  )}
+                </div>
               </div>
             </div>
           </div>

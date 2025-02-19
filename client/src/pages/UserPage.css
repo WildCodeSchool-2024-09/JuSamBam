@@ -1,14 +1,9 @@
-#UserPage {
-  height: 100%;
-}
-
 #profil-title {
   text-align: center;
   padding-bottom: 20px;
-  padding-top: 20px;
-  color: white;
-  font-size: 10px;
   padding-top: 60px;
+  color: white;
+  font-size: 15px;
 }
 
 h2#user-form-title {
@@ -17,8 +12,17 @@ h2#user-form-title {
   margin-top: 60px;
 }
 
+.img-user {
+  padding-bottom: 30px;
+  color: white;
+}
+
+input#new-image {
+  font-size: 8px;
+}
+
 img#img-avatar {
-  width: 50%;
+  width: 30%;
   border-radius: 100em;
   margin-bottom: 30px;
   margin-top: 20px;
@@ -28,22 +32,28 @@ img#img-avatar {
 #user-card {
   border: 5px solid #fd20a7;
   border-radius: 1em;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
   align-items: center;
   margin-left: 50px;
   margin-right: 50px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
 }
 
-#ul-card {
+#ul-card,
+#ul-card li {
   list-style-type: none;
   color: white;
-  padding-bottom: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-#button-modif {
-  margin-top: 70px;
+.button-modif {
+  margin-top: 30px;
   margin-bottom: 20px;
   font-size: 10px;
   height: auto;
@@ -59,11 +69,11 @@ img#img-avatar {
   color: black;
 }
 
-#button-modif:active {
+.button-modif:active {
   top: 2px;
 }
 
-#button-modif::before {
+.button-modif::before {
   content: "";
   display: block;
   position: absolute;
@@ -75,7 +85,7 @@ img#img-avatar {
   z-index: -1;
 }
 
-#button-modif::after {
+.button-modif::after {
   content: "";
   display: block;
   position: absolute;
@@ -87,63 +97,48 @@ img#img-avatar {
   z-index: -1;
 }
 
-.debug {
-  border: 2px solid white;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* * {
-  border: 2px solid white;
-} */
-
-.debug2 {
-  display: flex;
-  flex-direction: column;
-}
-
 @media screen and (min-width: 768px) {
   #user-card {
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
+    width: 70%;
   }
 
   img#img-avatar {
-    /* margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 200px; */
-    margin: 70px;
+    margin: 30px;
     width: 30%;
   }
 
-  #button-modif {
-    margin-top: 500px;
-    margin-left: 40px;
-    margin-bottom: 20px;
+  .ul-card {
+    font-size: 15px;
+    text-align: left;
+    padding-left: 20px;
   }
 
-  #ul-card {
-    position: absolute;
-    left: 70px;
-    font-size: 19px;
-    text-align: left;
-    top: 230px;
-    padding-left: 20px;
-    padding-top: 40px;
+  #UserPage {
+    padding-bottom: 130px;
   }
 
   #profil-title {
     font-size: 25px;
   }
+
+  #UserPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 @media screen and (min-width: 1024px) {
-  #UserPage {
-    height: 100%;
+  #ul-card {
+    font-size: 23px;
   }
 
-  #ul-card {
-    font-size: 30px;
+  h2#profil-title {
+    padding-top: 90px;
+  }
+
+  input#new-image {
+    font-size: 13px;
   }
 }

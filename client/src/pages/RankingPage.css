@@ -42,3 +42,9 @@ ul#ranking {
     font-size: 25px;
   }
 }
+
+@media screen and (min-width: 768px) {
+  #title-rank {
+    padding-top: 85px;
+  }
+}

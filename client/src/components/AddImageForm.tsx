@@ -11,9 +11,11 @@ function AddImageForm({ children, submitted }: NewImageProps) {
         submitted(imageData);
       }}
     >
-      <label htmlFor="new-image">Ajouter une image</label>
+      <label htmlFor="new-image">Modif Avatar</label>
       <input type="file" id="new-image" name="img_profile" />
-      <button type="submit">{children}</button>
+      <button className="button-modif" type="submit">
+        {children}
+      </button>
     </form>
   );
 }
