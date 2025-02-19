@@ -12,6 +12,7 @@ interface UserData {
   lastname: string;
   email: string;
   img_profile?: string;
+  infos?: string;
 }
 
 const UserPage = () => {
@@ -43,23 +44,27 @@ const UserPage = () => {
     setIsEditing(true);
   };
 
-  const handleSubmit = async (updatedUserData: UserData) => {
-    const response = await fetch(`${API_URL}/api/users`, {
+  const handleSubmit = (updatedUserData: UserData) => {
+    fetch(`${API_URL}/api/users`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // "Authorization": `Bearer ${token}`,
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedUserData),
-    });
-    if (!response.ok) {
-      const data = await response.json();
-      throw new Error(
-        data.message || "Erreur lors de la soumission des données",
-      );
-    }
-    setUserData(updatedUserData);
-    setIsEditing(false);
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((data) => {
+            throw new Error(
+              data.message || "Erreur lors de la soumission des données",
+            );
+          });
+        }
+        return updatedUserData;
+      })
+      .then((data) => {
+        setUserData(data);
+        setIsEditing(false);
+      })
+      .catch((error) => console.error(error));
   };
 
   // Affichage des données récupérées
@@ -72,60 +77,54 @@ const UserPage = () => {
           <div id="UserPage">
             <h2 id="profil-title">Profil de l'utilisateur</h2>
             <div id="user-card">
-              <div id="ul-card">
-                <ul>
-                  <li>Nom : {userData.lastname}</li>
-                  <li>Prénom : {userData.firstname}</li>
-                  <li>Email : {userData.email}</li>
-                </ul>
-                <button
-                  className="button-modif"
-                  type="button"
-                  onClick={handleEdit}
+              <div id="avatar-container">
+                {userData.img_profile ? (
+                  <img
+                    id="img-avatar"
+                    src={`${API_URL}/assets/images/${userData.img_profile}`}
+                    alt="Avatar"
+                  />
+                ) : (
+                  <img
+                    id="img-avatar"
+                    src="/assets/images/avatar.png"
+                    alt="Avatar"
+                  />
+                )}
+              </div>
+              <ul id="ul-card">
+                <li>Nom : {userData.lastname}</li>
+                <li>Prénom : {userData.firstname}</li>
+                <li>Email : {userData.email}</li>
+                {userData.infos && <li>Infos : {userData.infos}</li>}
+              </ul>
+
+              <button id="button-modif" type="button" onClick={handleEdit}>
+                Modifier les infos
+              </button>
+              {userData.img_profile ? (
+                ""
+              ) : (
+                <AddImageForm
+                  submitted={(image) => {
+                    fetch(`${API_URL}/api/users/${id}`, {
+                      method: "put",
+                      credentials: "include",
+                      headers: {
+                        enctype: "multipart/form-data",
+                      },
+                      body: image,
+                    }).then((res) => {
+                      if (res.status === 200) {
+                        alert("Image ajoutée");
+                        navigate("/user");
+                      }
+                    });
+                  }}
                 >
-                  Modifier les infos
-                </button>
-              </div>
-              <div className="debug">
-                <div className="img-user">
-                  {userData.img_profile ? (
-                    <img
-                      id="img-avatar"
-                      src={`${API_URL}/assets/images/${userData.img_profile}`}
-                      alt="Avatar"
-                    />
-                  ) : (
-                    <img
-                      id="img-avatar"
-                      src="\assets\images\avatar.png"
-                      alt="Avatar"
-                    />
-                  )}
-                  {userData.img_profile ? (
-                    ""
-                  ) : (
-                    <AddImageForm
-                      submitted={(image) => {
-                        fetch(`${API_URL}/api/users/${id}`, {
-                          method: "put",
-                          credentials: "include",
-                          headers: {
-                            enctype: "multipart/form-data",
-                          },
-                          body: image,
-                        }).then((res) => {
-                          if (res.status === 200) {
-                            alert("Image ajoutée");
-                            navigate("/user");
-                          }
-                        });
-                      }}
-                    >
-                      Modif
-                    </AddImageForm>
-                  )}
-                </div>
-              </div>
+                  Submit
+                </AddImageForm>
+              )}
             </div>
           </div>
         ))}

@@ -101,7 +101,6 @@ img#img-avatar {
   #user-card {
     flex-direction: row;
     justify-content: space-between;
-    width: 70%;
   }
 
   img#img-avatar {
