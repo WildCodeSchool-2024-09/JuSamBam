@@ -12,6 +12,7 @@ interface UserData {
   lastname: string;
   email: string;
   img_profile?: string;
+  infos?: string;
 }
 
 const UserPage = () => {
@@ -77,6 +78,7 @@ const UserPage = () => {
                   <li>Nom : {userData.lastname}</li>
                   <li>Prénom : {userData.firstname}</li>
                   <li>Email : {userData.email}</li>
+                  {userData.infos && <li>Infos : {userData.infos}</li>}
                 </ul>
                 <button
                   className="button-modif"
