@@ -139,7 +139,7 @@ const UserForm: React.FC<UserFormProps> = ({ userData, setUserData }) => {
         disabled={loading}
         aria-busy={loading}
       >
-        {loading ? "Enregistrement..." : "Mettre à jour"}
+        {loading ? "Enregistrement..." : "Mettre a jour"}
       </button>
       {message && <p>{message}</p>}
     </form>
