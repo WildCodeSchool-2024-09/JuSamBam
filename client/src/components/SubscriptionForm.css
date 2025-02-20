@@ -83,6 +83,10 @@ h1#subs {
   text-align: center;
 }
 
+.general-conditions a {
+  color: white;
+}
+
 button#pixel-subs {
   font-size: 10px;
 }
