@@ -63,7 +63,7 @@ function DecoPacmanFooter() {
         </div>
 
         <div ref={dotElementsRef}>
-          {[...Array(100)].map((_, index) => (
+          {[...Array(50)].map((_, index) => (
             <div
               key={crypto.randomUUID()}
               className="footer-dot"

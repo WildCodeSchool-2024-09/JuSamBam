@@ -8,7 +8,7 @@
 
 h2#user-form-title {
   color: white;
-  font-size: 10px;
+  font-size: 15px;
   margin-top: 60px;
 }
 
@@ -97,6 +97,12 @@ img#img-avatar {
   z-index: -1;
 }
 
+#password-help,
+#confirm-password-help {
+  color: white;
+  font-size: 12px;
+}
+
 @media screen and (min-width: 768px) {
   #user-card {
     flex-direction: row;
@@ -140,5 +146,11 @@ img#img-avatar {
 
   input#new-image {
     font-size: 13px;
+  }
+
+  h2#user-form-title {
+    color: white;
+    font-size: 25px;
+    margin-top: 85px;
   }
 }
