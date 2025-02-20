@@ -133,7 +133,12 @@ const UserForm: React.FC<UserFormProps> = ({ userData, setUserData }) => {
         Veuillez confirmer votre nouveau mot de passe.
       </p>
 
-      <button type="submit" disabled={loading} aria-busy={loading}>
+      <button
+        className="button-modif"
+        type="submit"
+        disabled={loading}
+        aria-busy={loading}
+      >
         {loading ? "Enregistrement..." : "Mettre à jour"}
       </button>
       {message && <p>{message}</p>}

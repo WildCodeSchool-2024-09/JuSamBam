@@ -155,6 +155,11 @@ label[for="game-title"] {
   margin-top: 100px;
 }
 
+#game-image {
+  color: white;
+  font-size: 10px;
+}
+
 @media screen and (min-width: 768px) {
   #title-list-game {
     font-size: 25px;
