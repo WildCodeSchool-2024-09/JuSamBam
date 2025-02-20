@@ -132,6 +132,7 @@
     flex-direction: row;
     flex-wrap: none;
     font-size: 15px;
+    gap: 40px;
   }
 
   .auth-link {
