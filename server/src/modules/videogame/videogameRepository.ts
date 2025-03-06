@@ -39,7 +39,7 @@ class VideogameRepository {
 
   async readFavs(userId: number) {
     const [rows] = await databaseClient.query(
-      "select title, img, gender, editor, descrip from videogame join user_favorite_game on user_favorite_game.videogame_id = videogame.id join user on user_favorite_game.user_id = user.id where user_id = ?",
+      "select videogame.id, title, img, gender, editor, descrip from videogame join user_favorite_game on user_favorite_game.videogame_id = videogame.id join user on user_favorite_game.user_id = user.id where user_id = ?",
       [userId],
     );
 

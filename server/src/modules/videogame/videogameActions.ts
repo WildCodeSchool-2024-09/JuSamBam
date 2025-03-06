@@ -45,8 +45,9 @@ const add: RequestHandler = async (req, res, next) => {
 };
 
 const getFavorites: RequestHandler = async (req, res, next) => {
+  const idUser = Number.parseInt(req.params.id);
   try {
-    const favs = await videogameRepository.readFavs(2);
+    const favs = await videogameRepository.readFavs(idUser);
     res.json(favs);
   } catch (err) {
     next(err);
