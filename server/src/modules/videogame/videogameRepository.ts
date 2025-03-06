@@ -36,6 +36,15 @@ class VideogameRepository {
 
     return result.insertId;
   }
+
+  async readFavs(userId: number) {
+    const [rows] = await databaseClient.query(
+      "select title, img, gender, editor, descrip from videogame join user_favorite_game on user_favorite_game.videogame_id = videogame.id join user on user_favorite_game.user_id = user.id where user_id = ?",
+      [userId],
+    );
+
+    return rows as Videogame[];
+  }
 }
 
 export default new VideogameRepository();

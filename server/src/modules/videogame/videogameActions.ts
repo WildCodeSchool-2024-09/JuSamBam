@@ -44,4 +44,13 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add };
+const getFavorites: RequestHandler = async (req, res, next) => {
+  try {
+    const favs = await videogameRepository.readFavs(2);
+    res.json(favs);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, add, getFavorites };
