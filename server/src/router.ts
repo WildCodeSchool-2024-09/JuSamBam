@@ -25,6 +25,7 @@ router.get(
 router.get("/api/auth/logout", authActions.logout);
 router.get("/api/videogames", videogameActions.browse);
 router.post("/api/videogames", upload.single("img"), videogameActions.add);
+router.get("/api/videogames/favs", videogameActions.getFavorites);
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
 router.put(
