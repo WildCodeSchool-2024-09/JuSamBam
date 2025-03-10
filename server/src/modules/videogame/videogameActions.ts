@@ -48,7 +48,7 @@ const getFavorites: RequestHandler = async (req, res, next) => {
   const idUser = Number.parseInt(req.params.id);
   try {
     const favs = await videogameRepository.readFavs(idUser);
-    res.json(favs);
+    res.status(200).json(favs);
   } catch (err) {
     next(err);
   }
@@ -61,7 +61,13 @@ const addFavorite: RequestHandler = async (req, res, next) => {
   };
   try {
     const insertId = await videogameRepository.createFavoriteGame(newFavorite);
-    res.json({ id: insertId });
+    if (insertId) {
+      res.status(201).json({ id: insertId });
+    } else {
+      res
+        .status(403)
+        .json({ message: "Une erreur est survenur lors de l'ajout du jeu" });
+    }
   } catch (err) {
     next(err);
   }
@@ -72,13 +78,34 @@ const deleteFavoriteGame: RequestHandler = async (req, res, next) => {
   try {
     const result = await videogameRepository.destroyFavoriteGame(gameId);
     if (result) {
-      res.json({ message: "Jeu retiré des favoris !" });
+      res.status(200).json({ message: "Jeu retiré des favoris !" });
     } else {
-      res.json({ message: "Une erreur est survenue" });
+      res.status(403).json({ message: "Une erreur est survenue" });
     }
   } catch (err) {
     next(err);
   }
 };
 
-export default { browse, add, getFavorites, addFavorite, deleteFavoriteGame };
+const destroy: RequestHandler = async (req, res, next) => {
+  const gameToDeleteId = Number.parseInt(req.params.id);
+  try {
+    const result = await videogameRepository.delete(gameToDeleteId);
+    if (result) {
+      res.status(200).json({ message: "Le jeu a bien été supprimé" });
+    } else {
+      res.status(403).json({ message: "Un erreur est survenue" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  browse,
+  add,
+  getFavorites,
+  addFavorite,
+  deleteFavoriteGame,
+  destroy,
+};

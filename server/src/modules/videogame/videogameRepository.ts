@@ -67,6 +67,14 @@ class VideogameRepository {
     );
     return result;
   }
+
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from videogames where id = ?",
+      [id],
+    );
+    return result;
+  }
 }
 
 export default new VideogameRepository();
