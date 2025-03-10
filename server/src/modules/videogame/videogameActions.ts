@@ -54,4 +54,31 @@ const getFavorites: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, getFavorites };
+const addFavorite: RequestHandler = async (req, res, next) => {
+  const newFavorite = {
+    gameId: Number.parseInt(req.params.id),
+    userId: Number.parseInt(req.body.userId),
+  };
+  try {
+    const insertId = await videogameRepository.createFavoriteGame(newFavorite);
+    res.json({ id: insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const deleteFavoriteGame: RequestHandler = async (req, res, next) => {
+  const gameId = Number.parseInt(req.params.id);
+  try {
+    const result = await videogameRepository.destroyFavoriteGame(gameId);
+    if (result) {
+      res.json({ message: "Jeu retiré des favoris !" });
+    } else {
+      res.json({ message: "Une erreur est survenue" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, add, getFavorites, addFavorite, deleteFavoriteGame };

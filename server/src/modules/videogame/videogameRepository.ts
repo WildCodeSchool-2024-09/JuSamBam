@@ -11,6 +11,11 @@ type Videogame = {
   descrip: string;
 };
 
+type Favorite = {
+  gameId: number;
+  userId: number;
+};
+
 class VideogameRepository {
   // Le C de CRUD - Opération de création
 
@@ -44,6 +49,23 @@ class VideogameRepository {
     );
 
     return rows as Videogame[];
+  }
+
+  async createFavoriteGame(newFav: Favorite) {
+    const [result] = await databaseClient.query<Result>(
+      "insrt into user_favorite_game (videogame_id, user_id) values (?, ?)",
+      [newFav.gameId, newFav.userId],
+    );
+
+    return result.insertId;
+  }
+
+  async destroyFavoriteGame(gameId: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from user_favorite_game where id = ?",
+      [gameId],
+    );
+    return result;
   }
 }
 
