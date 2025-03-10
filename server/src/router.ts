@@ -18,7 +18,7 @@ import videogameActions from "./modules/videogame/videogameActions";
 router.get("/api/videogames", videogameActions.browse);
 router.post("/api/videogames", upload.single("img"), videogameActions.add);
 router.get("/api/videogames/get-favs/:id", videogameActions.getFavorites);
-router.post("/api/videogames/add-favs/:id", videogameActions.addFavorite);
+router.post("/api/videogames/add-favs", videogameActions.addFavorite);
 router.delete(
   "/api/videogames/delete-fav/:id",
   videogameActions.deleteFavoriteGame,

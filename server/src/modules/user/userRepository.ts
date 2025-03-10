@@ -7,6 +7,7 @@ type User = {
   firstname: string;
   lastname: string;
   email: string;
+  is_admin: boolean;
   hashed_password: string;
 };
 
@@ -47,11 +48,12 @@ class userRepository {
 
   async create(addUser: Omit<User, "id">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into user (firstname, lastname, email, hashed_password) values (?, ?, ?, ?)",
+      "insert into user (firstname, lastname, email, is_admin, hashed_password) values (?, ?, ?, ?)",
       [
         addUser.firstname,
         addUser.lastname,
         addUser.email,
+        addUser.is_admin,
         addUser.hashed_password,
       ],
     );

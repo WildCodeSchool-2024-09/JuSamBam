@@ -51,6 +51,7 @@ const add: RequestHandler = async (req, res, next) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
+      is_admin: req.body.isAdmin,
       hashed_password: req.body.hashed_password,
     };
 

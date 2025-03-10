@@ -53,11 +53,11 @@ class VideogameRepository {
 
   async createFavoriteGame(newFav: Favorite) {
     const [result] = await databaseClient.query<Result>(
-      "insrt into user_favorite_game (videogame_id, user_id) values (?, ?)",
+      "insert into user_favorite_game (videogame_id, user_id) values (?, ?)",
       [newFav.gameId, newFav.userId],
     );
 
-    return result.insertId;
+    return result.affectedRows;
   }
 
   async destroyFavoriteGame(gameId: number) {
@@ -70,7 +70,7 @@ class VideogameRepository {
 
   async delete(id: number) {
     const [result] = await databaseClient.query<Result>(
-      "delete from videogames where id = ?",
+      "delete from videogame where id = ?",
       [id],
     );
     return result;

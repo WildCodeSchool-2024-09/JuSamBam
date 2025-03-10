@@ -2,6 +2,7 @@ import { animated } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
 import "../pages/GameListingPage.css";
 import { Link } from "react-router-dom";
+import { useIsAuthenticatedContext } from "../contexts/IsAuthenticatedContext";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -19,6 +20,7 @@ function Gamelisting() {
   const [index, setIndex] = useState(0);
   const startX = useRef(0);
   const endX = useRef(0);
+  const { isAuthenticated, userId, isAdmin } = useIsAuthenticatedContext();
 
   useEffect(() => {
     // Récupérer les jeux vidéos
@@ -104,6 +106,61 @@ function Gamelisting() {
                 <p>Genre : {game.gender}</p>
                 <p>Editeur : {game.editor}</p>
                 <p>Description : {game.descrip}</p>
+                {isAuthenticated ? (
+                  <div>
+                    {isAdmin ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          fetch(`${API_URL}/api/videogames/${game.id}`, {
+                            // credentials: "include",
+                            method: "delete",
+                          })
+                            .then((res) => {
+                              if (res.status === 200) {
+                                res.json();
+                              } else {
+                                return res.json();
+                              }
+                            })
+                            .then((data) => {
+                              if (data.message) {
+                                alert(data.message);
+                              }
+                            });
+                        }}
+                      >
+                        Supprimer
+                      </button>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        fetch(`${API_URL}/api/videogames/add-favs/`, {
+                          // credentials: "include",
+                          method: "post",
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({ userId, id: game.id }),
+                        })
+                          .then((res) => {
+                            if (res.status === 201) {
+                              return res.json();
+                            }
+                            return res.json();
+                          })
+                          .then((data) => {
+                            if (data.message) {
+                              alert(data.message);
+                            }
+                          });
+                      }}
+                    >
+                      Ajouter aux favoris
+                    </button>
+                  </div>
+                ) : null}
               </animated.div>
             );
           })}

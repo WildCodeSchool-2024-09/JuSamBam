@@ -56,17 +56,19 @@ const getFavorites: RequestHandler = async (req, res, next) => {
 
 const addFavorite: RequestHandler = async (req, res, next) => {
   const newFavorite = {
-    gameId: Number.parseInt(req.params.id),
+    gameId: Number.parseInt(req.body.id),
     userId: Number.parseInt(req.body.userId),
   };
   try {
-    const insertId = await videogameRepository.createFavoriteGame(newFavorite);
-    if (insertId) {
-      res.status(201).json({ id: insertId });
+    const affectedRows =
+      await videogameRepository.createFavoriteGame(newFavorite);
+
+    if (affectedRows !== 0) {
+      res.status(201).json({ message: "Jeu ajouté aux favoris." });
     } else {
       res
         .status(403)
-        .json({ message: "Une erreur est survenur lors de l'ajout du jeu" });
+        .json({ message: "Une erreur est survenue lors de l'ajout du jeu" });
     }
   } catch (err) {
     next(err);

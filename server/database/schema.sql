@@ -12,9 +12,10 @@ create table user (
   firstname varchar(255) not null,
   lastname varchar(255) not null,
   email varchar(255) not null,
+  is_admin boolean not null default false,
   hashed_password varchar(255) not null,
-  img_profile varchar(255),
-  infos text
+  img_profile varchar(255) default null,
+  infos text default null
   );
 
 create table user_favorite_game (
@@ -26,10 +27,10 @@ create table user_favorite_game (
 );
 
 insert into user
-(firstname, lastname, email, hashed_password, img_profile, infos)
+(firstname, lastname, email, is_admin, hashed_password, img_profile, infos)
 values
-("Toto", "Toto", "toto@toto.toto", "$argon2id$v=19$m=19456,t=2,p=1$J2342ebtmZRAlyn1zk6B7Q$AOf1vLCHo+8QB+cBTmBSz8Z7MR282UBWZqzr9glrkH4", null, null),
-("Anakin", "Skywalker", "anakin.skywalker@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$v/E65Tl3DJyR0eB/TQqndg$XBXi6ukIHAcG6bEpOZ6Ojuu8SiunvF9Vkqxj6PjVG/A", "anakin.png", "Je déteste le sable !!!");
+("Anakin", "Skywalker", "anakin.skywalker@gmail.com", true, "$argon2id$v=19$m=19456,t=2,p=1$v/E65Tl3DJyR0eB/TQqndg$XBXi6ukIHAcG6bEpOZ6Ojuu8SiunvF9Vkqxj6PjVG/A", "anakin.png", "Je déteste le sable !!!");
+
 
 insert into videogame (title, img, gender, editor, descrip)
 values
@@ -53,6 +54,4 @@ values
 insert into user_favorite_game
 (videogame_id, user_id)
 values
-(1, 1),
-(2, 1),
-(5, 2);
+(1, 1);
