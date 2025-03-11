@@ -44,4 +44,70 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add };
+const getFavorites: RequestHandler = async (req, res, next) => {
+  const idUser = Number.parseInt(req.params.id);
+  try {
+    const favs = await videogameRepository.readFavs(idUser);
+    res.status(200).json(favs);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const addFavorite: RequestHandler = async (req, res, next) => {
+  const newFavorite = {
+    gameId: Number.parseInt(req.body.id),
+    userId: Number.parseInt(req.body.userId),
+  };
+  try {
+    const affectedRows =
+      await videogameRepository.createFavoriteGame(newFavorite);
+
+    if (affectedRows !== 0) {
+      res.status(201).json({ message: "Jeu ajouté aux favoris." });
+    } else {
+      res
+        .status(403)
+        .json({ message: "Une erreur est survenue lors de l'ajout du jeu" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const deleteFavoriteGame: RequestHandler = async (req, res, next) => {
+  const gameId = Number.parseInt(req.params.id);
+  try {
+    const result = await videogameRepository.destroyFavoriteGame(gameId);
+    if (result) {
+      res.status(204).json({ message: "Jeu retiré des favoris !" });
+    } else {
+      res.status(403).json({ message: "Une erreur est survenue" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+const destroy: RequestHandler = async (req, res, next) => {
+  const gameToDeleteId = Number.parseInt(req.params.id);
+  try {
+    const result = await videogameRepository.delete(gameToDeleteId);
+    if (result) {
+      res.status(200).json({ message: "Le jeu a bien été supprimé" });
+    } else {
+      res.status(403).json({ message: "Un erreur est survenue" });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default {
+  browse,
+  add,
+  getFavorites,
+  addFavorite,
+  deleteFavoriteGame,
+  destroy,
+};

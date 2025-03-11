@@ -27,6 +27,11 @@ function Header() {
         <Link className="pixel-nav" to={"/classement"}>
           Classement
         </Link>
+        {isAuthenticated && (
+          <Link className="pixel-nav" to={`/favoris/${userId}`}>
+            Mes favoris
+          </Link>
+        )}
       </nav>
       {/* Si un utilisateur est authentifié, afficher le lien vers le profil et celui de déconnexion. */}
       <section className="auth-section">

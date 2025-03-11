@@ -5,6 +5,8 @@ type IsAuthenticatedType = {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   userId: number | null;
   setUserId: React.Dispatch<React.SetStateAction<number | null>>;
+  isAdmin: boolean;
+  setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const IsAuthenticatedContext = createContext<IsAuthenticatedType | null>(null);
@@ -16,6 +18,8 @@ export const IsAuthenticatedProvider = ({
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [userId, setUserId] = useState<number | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/auth/check`, {
       credentials: "include",
@@ -26,13 +30,23 @@ export const IsAuthenticatedProvider = ({
           return res.json();
         }
       })
-      .then((data) => setUserId(data.id))
+      .then((data) => {
+        setUserId(data.id);
+        setIsAdmin(data.isAdmin);
+      })
       .catch(() => setIsAuthenticated(false));
   }, []);
 
   return (
     <IsAuthenticatedContext.Provider
-      value={{ isAuthenticated, setIsAuthenticated, userId, setUserId }}
+      value={{
+        isAuthenticated,
+        setIsAuthenticated,
+        userId,
+        setUserId,
+        isAdmin,
+        setIsAdmin,
+      }}
     >
       {children}
     </IsAuthenticatedContext.Provider>

@@ -16,7 +16,8 @@ function LoginPage() {
     password: "",
   };
 
-  const { setIsAuthenticated, setUserId } = useIsAuthenticatedContext();
+  const { setIsAuthenticated, setUserId, setIsAdmin } =
+    useIsAuthenticatedContext();
 
   return (
     <div>
@@ -42,6 +43,7 @@ function LoginPage() {
             })
             .then((data) => {
               setUserId(data.id);
+              setIsAdmin(data.isAdmin);
               navigate("/");
             });
         }}

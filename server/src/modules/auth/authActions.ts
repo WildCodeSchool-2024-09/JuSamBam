@@ -27,6 +27,7 @@ const login: RequestHandler = async (req, res, next) => {
         // Crée un payload avec l'ID de l'utilisateur
         const myPlayload = {
           id: user.id,
+          isAdmin: user.is_admin,
         };
         // Génère un token JWT
         const token = await jwt.sign(
@@ -41,8 +42,8 @@ const login: RequestHandler = async (req, res, next) => {
           sameSite: "strict",
           maxAge: 60 * 60 * 1000,
         });
-        // Renvoie l'ID de l'utilisateur en réponse
-        res.status(200).json({ id: user.id });
+        // Renvoie l'ID et le statut de l'utilisateur en réponse
+        res.status(200).json({ id: user.id, isAdmin: user.is_admin });
       } else {
         //Si la vérification échoue renvoie un statut 403
         res.sendStatus(403);
@@ -69,12 +70,16 @@ const checkAuthCookie: RequestHandler = (req, res, next) => {
         res.status(200);
       } else {
         // Sinon efface le cookie
-        res.clearCookie("authToken");
+        res
+          .clearCookie("authToken")
+          .json({ message: "Vous avez été déconnecté !" });
       }
       next();
     } else {
       // Si le token n'existe pas renvoie un statut 401
-      res.sendStatus(401);
+      res
+        .status(401)
+        .json({ message: "Vous n'êtes pas autorisé à faire ça !" });
     }
   } catch (err) {
     next(err);
