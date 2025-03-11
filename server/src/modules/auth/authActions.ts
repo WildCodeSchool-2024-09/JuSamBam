@@ -70,12 +70,16 @@ const checkAuthCookie: RequestHandler = (req, res, next) => {
         res.status(200);
       } else {
         // Sinon efface le cookie
-        res.clearCookie("authToken");
+        res
+          .clearCookie("authToken")
+          .json({ message: "Vous avez été déconnecté !" });
       }
       next();
     } else {
       // Si le token n'existe pas renvoie un statut 401
-      res.sendStatus(401);
+      res
+        .status(401)
+        .json({ message: "Vous n'êtes pas autorisé à faire ça !" });
     }
   } catch (err) {
     next(err);

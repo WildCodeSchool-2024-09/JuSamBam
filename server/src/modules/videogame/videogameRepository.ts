@@ -62,7 +62,7 @@ class VideogameRepository {
 
   async destroyFavoriteGame(gameId: number) {
     const [result] = await databaseClient.query<Result>(
-      "delete from user_favorite_game where id = ?",
+      "delete from user_favorite_game where videogame_id = ?",
       [gameId],
     );
     return result;
