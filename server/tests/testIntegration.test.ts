@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config({ path: ".env" });
+import "dotenv/config";
 import supertest from "supertest";
 import databaseClient from "../database/client";
 import app from "../src/app";
@@ -15,6 +14,9 @@ describe("Videogame API Endpoints", () => {
     expect(response.body.length).toBeGreaterThan(0);
     expect(response.body[0]).toHaveProperty("title");
     expect(response.body[0]).toHaveProperty("img");
+    expect(response.body[0]).toHaveProperty("gender");
+    expect(response.body[0]).toHaveProperty("editor");
+    expect(response.body[0]).toHaveProperty("descrip");
   });
   // Après tous les tests, fermer la connexion à la base
   afterAll(async () => {

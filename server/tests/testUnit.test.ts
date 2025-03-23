@@ -1,9 +1,9 @@
-import { afterAll, describe, expect, test } from "@jest/globals";
+import { describe, expect, test } from "@jest/globals";
 import app from "../src/app";
 import "dotenv/config";
 import supertest from "supertest";
 import databaseClient from "../database/client";
-import type { Result, Rows } from "../database/client";
+import type { Rows } from "../database/client";
 
 // Suite de tests pour l'endpoint userAction
 describe("User Action Endpoints", () => {
@@ -23,10 +23,14 @@ describe("User Action Endpoints", () => {
     const newUser = {
       firstname: "John",
       lastname: "Doe",
+      email: "johndoe@gmail.com",
+      password: "coucou",
+      confirmPassword: "coucou",
     };
     const response = await supertest(app).post("/api/users").send(newUser);
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("firstname", newUser.firstname);
     expect(response.body).toHaveProperty("lastname", newUser.lastname);
+    expect(response.body).toHaveProperty("email", newUser.email);
   });
 });
