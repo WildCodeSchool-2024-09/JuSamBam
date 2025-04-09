@@ -4,8 +4,7 @@
   font-style: normal;
   text-align: center;
   font-size: 15px;
-  padding-top: 75px;
-  padding-bottom: 40px;
+  padding-top: 10px;
 }
 
 .carousel-container {
@@ -50,8 +49,10 @@
 }
 
 .card img {
-  width: 100%;
+  width: 50%;
   border-radius: 10px;
+  background: transparent;
+  filter: drop-shadow(0 0 10px white);
 }
 
 .card h2,
@@ -83,8 +84,11 @@
   display: none;
 }
 
-.addition-game {
-  font-size: 10px;
+.addition-game,
+#button-delete,
+#button-favoris,
+.button-withdraw {
+  font-size: 7px;
   color: black;
   height: auto;
   margin: 10px;
@@ -101,14 +105,20 @@
   width: auto;
   z-index: 2;
   text-decoration: none;
-  margin-bottom: 70px;
+  margin-bottom: 10px;
 }
 
-.addition-game:active {
+.addition-game:active,
+#button-delete:active,
+#button-favoris:active,
+.button-withdraw:active {
   top: 2px;
 }
 
-.addition-game::before {
+.addition-game::before,
+#button-delete::before,
+#button-favoris::before,
+.button-withdraw::before {
   content: "";
   display: block;
   position: absolute;
@@ -120,7 +130,10 @@
   z-index: -1;
 }
 
-.addition-game::after {
+.addition-game::after,
+#button-delete::after,
+#button-favoris::after,
+.button-withdraw::after {
   content: "";
   display: block;
   position: absolute;
@@ -181,12 +194,12 @@ label[for="game-title"] {
   }
 
   .card img {
-    width: 80%;
+    width: 60%;
   }
 
   .card h2,
   .card p {
-    font-size: 11px;
+    font-size: 9px;
   }
 
   .card.active {
@@ -223,5 +236,15 @@ label[for="game-title"] {
 
   #img-unauthorized {
     width: 30%;
+  }
+
+  .addition-game,
+  #button-delete,
+  #button-favoris {
+    font-size: 11px;
+  }
+
+  #title-list-game {
+    padding-top: 30px;
   }
 }

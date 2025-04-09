@@ -110,6 +110,7 @@ function Gamelisting() {
                   <div>
                     {isAdmin ? (
                       <button
+                        id="button-delete"
                         type="button"
                         onClick={() => {
                           fetch(`${API_URL}/api/videogames/${game.id}`, {
@@ -134,6 +135,7 @@ function Gamelisting() {
                       </button>
                     ) : null}
                     <button
+                      id="button-favoris"
                       type="button"
                       onClick={() => {
                         fetch(`${API_URL}/api/videogames/add-favs/`, {

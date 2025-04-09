@@ -6,37 +6,71 @@
   color: white;
 }
 
-.game-card-container {
-  height: calc(100vh - 100px - 100px);
+.game-card-container-main {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   color: white;
+  padding-top: 70px;
+  gap: 2em;
+}
+
+.game-card p {
+  font-size: 9px;
+}
+
+.game-card h2 {
+  font-size: 15px;
 }
 
 .game-card {
+  width: 250px;
+  height: 415px;
+  background-color: #320f52;
+  border: solid #fd20a7 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 25px;
-  width: 75%;
-  line-height: 20px;
-  padding-top: 80px;
+  transition: transform 0.5s, opacity 0.5s, box-shadow 0.3s ease-in-out;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+  gap: 15px;
 }
 
 .favorite-game-img {
-  height: 100px;
+  height: 80px;
 }
 
 @media screen and (min-width: 520px) {
   .favorite-game-img {
-    height: 150px;
+    height: 100px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .favorite-game-img {
-    height: 200px;
+    height: 115px;
+  }
+
+  .game-card {
+    width: 25em;
+    height: 35em;
+  }
+
+  .game-card p {
+    font-size: 15px;
+  }
+
+  .game-card h2 {
+    font-size: 25px;
+  }
+
+  .game-card-container {
+    padding-top: 40px;
   }
 }

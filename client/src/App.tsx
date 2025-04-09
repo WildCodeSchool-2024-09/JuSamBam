@@ -12,7 +12,9 @@ function App() {
         <Header />
       </header>
       <main>
-        <Outlet />
+        <div className="game-card-container-main">
+          <Outlet />
+        </div>
       </main>
       <footer>
         <Footer />
