@@ -54,7 +54,7 @@ function FavoritesGamesPage() {
           <article className="game-card">
             <FavoriteGame game={favoriteGame} />
             <button
-              className="pixel-nav"
+              className="button-withdraw"
               type="button"
               onClick={() =>
                 fetch(

@@ -12,7 +12,7 @@
   color: white;
   font-size: 15px;
   text-align: center;
-  padding-top: 60px;
+  padding-top: 10px;
 }
 
 .rank {
@@ -45,6 +45,6 @@ ul#ranking {
 
 @media screen and (min-width: 768px) {
   #title-rank {
-    padding-top: 85px;
+    padding-top: 40px;
   }
 }
