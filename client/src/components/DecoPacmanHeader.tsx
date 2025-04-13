@@ -63,7 +63,7 @@ function DecoPacmanHeader() {
         </div>
 
         <div ref={dotElementsRef}>
-          {[...Array(65)].map((_, index) => (
+          {[...Array(62)].map((_, index) => (
             <div
               key={crypto.randomUUID()}
               className="header-dot"
