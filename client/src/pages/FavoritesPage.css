@@ -44,6 +44,8 @@
 
 .favorite-game-img {
   height: 80px;
+  background: transparent;
+  filter: drop-shadow(0 0 10px white);
 }
 
 @media screen and (min-width: 520px) {

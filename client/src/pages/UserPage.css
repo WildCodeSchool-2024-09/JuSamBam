@@ -13,15 +13,32 @@ h2#user-form-title {
 }
 
 .img-user {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   color: white;
+}
+
+form#form-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  font-size: 1.5em;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input#new-image {
   font-size: 8px;
 }
 
-img#img-avatar {
+img#img-avatar,
+img#img-avatar-default {
   width: 40%;
   border-radius: 100em;
   margin-bottom: 30px;
@@ -115,6 +132,10 @@ img#img-avatar {
   img#img-avatar {
     margin: 30px;
     width: 60%;
+  }
+
+  img#img-avatar-default {
+    width: 25%;
   }
 
   #ul-card li {

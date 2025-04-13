@@ -74,7 +74,11 @@ const UserForm: React.FC<UserFormProps> = ({ userData, setUserData }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} aria-labelledby="user-form-title">
+    <form
+      id="form-user"
+      onSubmit={handleSubmit}
+      aria-labelledby="user-form-title"
+    >
       <h2 id="user-form-title">Modifier votre profil</h2>
 
       <label htmlFor="name">Nom :</label>
