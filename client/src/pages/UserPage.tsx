@@ -98,7 +98,7 @@ const UserPage = () => {
                     />
                   ) : (
                     <img
-                      id="img-avatar"
+                      id="img-avatar-default"
                       src="\assets\images\avatar.png"
                       alt="Avatar"
                     />
